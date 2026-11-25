@@ -1,0 +1,2120 @@
+version 3
+run Survey-0-20261125-00:04:20-16924
+attr configname Survey
+attr datetime 20261125-00:04:20
+attr datetimef 20261125-000420
+attr experiment Survey
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network Roaming
+attr processid 16924
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config image-path ../../inet/images
+config description "a receive-only meter walks the same path and records every beacon of both APs"
+config repeat 3
+config *.survey true
+config *.meter.wlan[0].radio.channelNumber 1
+config *.meter.wlan[1].radio.channelNumber 3
+config *.meter.wlan[0].mgmt.accessPointAddress "\"10:00:00:00:00:01\""
+config *.meter.wlan[1].mgmt.accessPointAddress "\"10:00:00:00:00:02\""
+config *.meter.wlan[*].radio.minSnir.result-recording-modes +vector
+config *.meter.wlan[*].radio.minSnir:vector.vector-recording true
+config network Roaming
+config Contention.**.wlan*.bitrate 18Mbps
+config Contention.**.cli.reqLength 950B
+config Anomaly.n 6
+config Anomaly.host[0].wlan[*].bitrate 9Mbps
+config Anomaly.host[*].wlan[*].bitrate 48Mbps
+config Anomaly.ap.wlan[*].bitrate 48Mbps
+config Anomaly.**.messageLength 950B
+config Anomaly.ap.**.pendingQueue.numQueues 6
+config Roaming.D 51m
+config Roaming.radioMedium.pathLoss.alpha 3.2
+config Roaming.radioMedium.pathLoss.sigma 4
+config Roaming.ap*.wlan.mgmt.beaconInterval 200ms
+config Roaming.host.wlan.mgmt.numChannels 5
+config Roaming.*.mobility.turtleScript "xml(\"<movement><set x='50' y='102' speed='1.5' angle='0'/><forward d='51'/></movement>\")"
+config sim-time-limit 120s
+config **.vector-recording false
+config **.constraintAreaMinX 0m
+config **.constraintAreaMinY 0m
+config **.constraintAreaMinZ 0m
+config **.constraintAreaMaxX 600m
+config **.constraintAreaMaxY 200m
+config **.constraintAreaMaxZ 0m
+config **.mobility.initialZ 0m
+config **.mobility.initFromDisplayString false
+config *.radioMedium.pathLoss.typename LogNormalShadowing
+config *.radioMedium.sameTransmissionStartTimeCheck "\"ignore\""
+config *.radioMedium.analogModel.ignorePartialInterference true
+config **.opMode "\"a\""
+config **.radio.bandName "\"5 GHz (20 MHz)\""
+config **.radio.transmitter.power 20mW
+config **.wlan*.bitrate 12Mbps
+config **.rateSelection.mgmtFrameBitrate 6Mbps
+config **.rateSelection.multicastFrameBitrate 6Mbps
+config *.ap1.wlan.address "\"10:00:00:00:00:01\""
+config *.ap2.wlan.address "\"10:00:00:00:00:02\""
+config *.ap*.wlan.mgmt.ssid "\"CA2\""
+config *.ap1.wlan.radio.channelNumber 1
+config *.ap2.wlan.radio.channelNumber 3
+config *.host.cli.destAddress "\"20:00:00:00:00:00\""
+config *.host.cli.sendInterval 20ms
+config *.host.cli.reqLength 160B
+config *.host.cli.respLength 0B
+config *.host.cli.startTime 1s
+
+vector 0 Roaming.ap1.sink droppedPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths"
+attr unit b
+vector 1 Roaming.ap1.sink droppedDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetDropped)
+attr title "dropped data rate"
+attr unit bps
+vector 2 Roaming.ap1.sink packetLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushed)
+attr title "packet lengths"
+attr unit b
+vector 3 Roaming.ap1.sink dataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushed)
+attr title "data rate"
+attr unit bps
+vector 4 Roaming.ap1.sink meanBitLifeTimePerPacket:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed)))
+attr title "mean bit life time per packet"
+attr unit s
+vector 5 Roaming.ap1.sink packetLifeTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLifeTime(packetPushed)
+attr title "packet life time"
+attr unit s
+vector 6 Roaming.ap1.sink packetJitter:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source jitter(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
+attr title "packet jitter"
+attr unit s
+vector 7 Roaming.ap1.sink packetDelayDifferenceToMean:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source differenceToMean(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
+attr title "packet delay difference to mean"
+attr unit s
+vector 8 Roaming.ap1.sink packetDelayVariation:vector ETV
+attr recordingmode vector
+attr source stddev(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
+attr title "packet delay variation"
+attr unit s
+vector 9 Roaming.ap1.wlan.mac.dcf.channelAccess.pendingQueue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 10 Roaming.ap1.wlan.mac.dcf.channelAccess.pendingQueue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 11 Roaming.ap1.wlan.mac.dcf.channelAccess.pendingQueue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 12 Roaming.ap1.wlan.mac.dcf.channelAccess.pendingQueue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 13 Roaming.ap1.wlan.mac.dcf.channelAccess.pendingQueue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 14 Roaming.ap1.wlan.mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 15 Roaming.ap1.wlan.mac.dcf.channelAccess.pendingQueue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 16 Roaming.ap1.wlan.mac.dcf.channelAccess.pendingQueue droppedPacketLengthsQueueOverflow:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow"
+attr unit b
+vector 17 Roaming.ap1.wlan.mac.dcf.channelAccess.pendingQueue flowQueueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+vector 18 Roaming.ap1.wlan.mac.dcf.channelAccess.pendingQueue flowIncomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(flowPacketLength(demuxFlow(packetPushStarted)))
+attr title "flow specific incoming data rate"
+attr unit bps
+vector 19 Roaming.ap1.wlan.mac.dcf.channelAccess.pendingQueue flowOutgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(flowPacketLength(demuxFlow(packetPulled)))
+attr title "flow specific outgoing data rate"
+attr unit bps
+vector 20 Roaming.ap1.wlan.mac.dcf.channelAccess.inProgressFrames queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetDequeued)
+attr title "queueing times"
+vector 21 Roaming.ap1.wlan.mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length"
+vector 22 Roaming.ap1.wlan.mac.dcf.channelAccess.contention backoffPeriodGenerated:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "backoff periods"
+vector 23 Roaming.ap1.wlan.mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(backoffStarted)-count(backoffStopped))
+attr title "backoff active"
+vector 24 Roaming.ap1.wlan.mac.dcf.channelAccess.contention stateChanged:vector ETV
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode vector
+attr title "contention state changed"
+attr type enum
+vector 25 Roaming.ap1.wlan.mac.dcf.recipientMacDataService packetDropDuplicateDetected:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, packetBytes"
+vector 26 Roaming.ap1.wlan.mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "contention window"
+vector 27 Roaming.ap1.wlan.mac.dcf packetSentToPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent, packetBytes"
+vector 28 Roaming.ap1.wlan.mac.dcf packetSentToPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, packetBytes"
+vector 29 Roaming.ap1.wlan.mac.dcf packetSentToPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, packetBytes"
+vector 30 Roaming.ap1.wlan.mac.dcf packetSentToPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , packetBytes"
+vector 31 Roaming.ap1.wlan.mac.dcf packetSentToPeerWithRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, packetBytes"
+vector 32 Roaming.ap1.wlan.mac.dcf packetSentToPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, packetBytes"
+vector 33 Roaming.ap1.wlan.mac.dcf packetReceivedFromPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received, packetBytes"
+vector 34 Roaming.ap1.wlan.mac.dcf packetReceivedFromPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, packetBytes"
+vector 35 Roaming.ap1.wlan.mac.dcf packetReceivedFromPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, packetBytes"
+vector 36 Roaming.ap1.wlan.mac.dcf packetReceivedFromPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, packetBytes"
+vector 37 Roaming.ap1.wlan.mac.dcf packetReceivedFromPeerWithRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Retry(packetReceivedFromPeer)
+attr title "packets received: with retry, packetBytes"
+vector 38 Roaming.ap1.wlan.mac.dcf packetReceivedFromPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, packetBytes"
+vector 39 Roaming.ap1.wlan.mac.dcf packetDrop:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropped
+attr title "packet drops, packetBytes"
+vector 40 Roaming.ap1.wlan.mac.dcf packetDropNotAddressedToUs:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, packetBytes"
+vector 41 Roaming.ap1.wlan.mac.dcf packetDropQueueOverflow:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, packetBytes"
+vector 42 Roaming.ap1.wlan.mac.dcf packetDropRetryLimitReached:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, packetBytes"
+vector 43 Roaming.ap1.wlan.mac.dcf frameSequenceActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(frameSequenceStarted)-count(frameSequenceFinished))
+attr title "frame sequence active"
+vector 44 Roaming.ap1.wlan.mac.dcf datarateSelected:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "datarates selected"
+vector 45 Roaming.ap1.wlan.mac.rx nav:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source navChanged
+attr title "network allocation vector"
+vector 46 Roaming.ap1.wlan.mac packetSentToUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to upper layer, packetBytes"
+vector 47 Roaming.ap1.wlan.mac packetSentToLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to lower layer, packetBytes"
+vector 48 Roaming.ap1.wlan.mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from upper layer, packetBytes"
+vector 49 Roaming.ap1.wlan.mac packetReceivedFromLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from lower layer, packetBytes"
+vector 50 Roaming.ap1.wlan.mac packetDrop:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropped
+attr title "packet drops, packetBytes"
+vector 51 Roaming.ap1.wlan.mac packetDropIncorrectlyReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drops: incorrectly received, packetBytes"
+vector 52 Roaming.ap1.wlan.mac packetDropNotAddressedToUs:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, packetBytes"
+vector 53 Roaming.ap1.wlan.mac packetDropQueueOverflow:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, packetBytes"
+vector 54 Roaming.ap1.wlan.mac packetDropRetryLimitReached:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, packetBytes"
+vector 55 Roaming.ap1.wlan.mac packetDropDuplicateDetected:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, packetBytes"
+vector 56 Roaming.ap1.wlan.mac packetDropOther:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsOther(packetDropped)
+attr title "packet drops: other, packetBytes"
+vector 57 Roaming.ap1.wlan.radio radioMode:vector ETV
+attr enum OFF,SLEEP,RECEIVER,TRANSMITTER,TRANSCEIVER,SWITCHING
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+attr type enum
+vector 58 Roaming.ap1.wlan.radio receptionState:vector ETV
+attr enum UNDEFINED,IDLE,BUSY,RECEIVING
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+attr type enum
+vector 59 Roaming.ap1.wlan.radio transmissionState:vector ETV
+attr enum UNDEFINED,IDLE,TRANSMITTING
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "Radio transmission state"
+attr type enum
+vector 60 Roaming.ap1.wlan.radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioChannelChanged
+attr title "Radio channel"
+vector 61 Roaming.ap1.wlan packetDropInterfaceDown:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, packetBytes"
+vector 62 Roaming.ap1.wlan packetDropNoCarrier:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, packetBytes"
+vector 63 Roaming.ap2.sink droppedPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths"
+attr unit b
+vector 64 Roaming.ap2.sink droppedDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetDropped)
+attr title "dropped data rate"
+attr unit bps
+vector 65 Roaming.ap2.sink packetLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushed)
+attr title "packet lengths"
+attr unit b
+vector 66 Roaming.ap2.sink dataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushed)
+attr title "data rate"
+attr unit bps
+vector 67 Roaming.ap2.sink meanBitLifeTimePerPacket:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed)))
+attr title "mean bit life time per packet"
+attr unit s
+vector 68 Roaming.ap2.sink packetLifeTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLifeTime(packetPushed)
+attr title "packet life time"
+attr unit s
+vector 69 Roaming.ap2.sink packetJitter:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source jitter(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
+attr title "packet jitter"
+attr unit s
+vector 70 Roaming.ap2.sink packetDelayDifferenceToMean:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source differenceToMean(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
+attr title "packet delay difference to mean"
+attr unit s
+vector 71 Roaming.ap2.sink packetDelayVariation:vector ETV
+attr recordingmode vector
+attr source stddev(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
+attr title "packet delay variation"
+attr unit s
+vector 72 Roaming.ap2.wlan.mac.dcf.channelAccess.pendingQueue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 73 Roaming.ap2.wlan.mac.dcf.channelAccess.pendingQueue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 74 Roaming.ap2.wlan.mac.dcf.channelAccess.pendingQueue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 75 Roaming.ap2.wlan.mac.dcf.channelAccess.pendingQueue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 76 Roaming.ap2.wlan.mac.dcf.channelAccess.pendingQueue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 77 Roaming.ap2.wlan.mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 78 Roaming.ap2.wlan.mac.dcf.channelAccess.pendingQueue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 79 Roaming.ap2.wlan.mac.dcf.channelAccess.pendingQueue droppedPacketLengthsQueueOverflow:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow"
+attr unit b
+vector 80 Roaming.ap2.wlan.mac.dcf.channelAccess.pendingQueue flowQueueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+vector 81 Roaming.ap2.wlan.mac.dcf.channelAccess.pendingQueue flowIncomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(flowPacketLength(demuxFlow(packetPushStarted)))
+attr title "flow specific incoming data rate"
+attr unit bps
+vector 82 Roaming.ap2.wlan.mac.dcf.channelAccess.pendingQueue flowOutgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(flowPacketLength(demuxFlow(packetPulled)))
+attr title "flow specific outgoing data rate"
+attr unit bps
+vector 83 Roaming.ap2.wlan.mac.dcf.channelAccess.inProgressFrames queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetDequeued)
+attr title "queueing times"
+vector 84 Roaming.ap2.wlan.mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length"
+vector 85 Roaming.ap2.wlan.mac.dcf.channelAccess.contention backoffPeriodGenerated:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "backoff periods"
+vector 86 Roaming.ap2.wlan.mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(backoffStarted)-count(backoffStopped))
+attr title "backoff active"
+vector 87 Roaming.ap2.wlan.mac.dcf.channelAccess.contention stateChanged:vector ETV
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode vector
+attr title "contention state changed"
+attr type enum
+vector 88 Roaming.ap2.wlan.mac.dcf.recipientMacDataService packetDropDuplicateDetected:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, packetBytes"
+vector 89 Roaming.ap2.wlan.mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "contention window"
+vector 90 Roaming.ap2.wlan.mac.dcf packetSentToPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent, packetBytes"
+vector 91 Roaming.ap2.wlan.mac.dcf packetSentToPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, packetBytes"
+vector 92 Roaming.ap2.wlan.mac.dcf packetSentToPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, packetBytes"
+vector 93 Roaming.ap2.wlan.mac.dcf packetSentToPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , packetBytes"
+vector 94 Roaming.ap2.wlan.mac.dcf packetSentToPeerWithRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, packetBytes"
+vector 95 Roaming.ap2.wlan.mac.dcf packetSentToPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, packetBytes"
+vector 96 Roaming.ap2.wlan.mac.dcf packetReceivedFromPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received, packetBytes"
+vector 97 Roaming.ap2.wlan.mac.dcf packetReceivedFromPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, packetBytes"
+vector 98 Roaming.ap2.wlan.mac.dcf packetReceivedFromPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, packetBytes"
+vector 99 Roaming.ap2.wlan.mac.dcf packetReceivedFromPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, packetBytes"
+vector 100 Roaming.ap2.wlan.mac.dcf packetReceivedFromPeerWithRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Retry(packetReceivedFromPeer)
+attr title "packets received: with retry, packetBytes"
+vector 101 Roaming.ap2.wlan.mac.dcf packetReceivedFromPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, packetBytes"
+vector 102 Roaming.ap2.wlan.mac.dcf packetDrop:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropped
+attr title "packet drops, packetBytes"
+vector 103 Roaming.ap2.wlan.mac.dcf packetDropNotAddressedToUs:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, packetBytes"
+vector 104 Roaming.ap2.wlan.mac.dcf packetDropQueueOverflow:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, packetBytes"
+vector 105 Roaming.ap2.wlan.mac.dcf packetDropRetryLimitReached:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, packetBytes"
+vector 106 Roaming.ap2.wlan.mac.dcf frameSequenceActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(frameSequenceStarted)-count(frameSequenceFinished))
+attr title "frame sequence active"
+vector 107 Roaming.ap2.wlan.mac.dcf datarateSelected:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "datarates selected"
+vector 108 Roaming.ap2.wlan.mac.rx nav:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source navChanged
+attr title "network allocation vector"
+vector 109 Roaming.ap2.wlan.mac packetSentToUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to upper layer, packetBytes"
+vector 110 Roaming.ap2.wlan.mac packetSentToLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to lower layer, packetBytes"
+vector 111 Roaming.ap2.wlan.mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from upper layer, packetBytes"
+vector 112 Roaming.ap2.wlan.mac packetReceivedFromLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from lower layer, packetBytes"
+vector 113 Roaming.ap2.wlan.mac packetDrop:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropped
+attr title "packet drops, packetBytes"
+vector 114 Roaming.ap2.wlan.mac packetDropIncorrectlyReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drops: incorrectly received, packetBytes"
+vector 115 Roaming.ap2.wlan.mac packetDropNotAddressedToUs:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, packetBytes"
+vector 116 Roaming.ap2.wlan.mac packetDropQueueOverflow:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, packetBytes"
+vector 117 Roaming.ap2.wlan.mac packetDropRetryLimitReached:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, packetBytes"
+vector 118 Roaming.ap2.wlan.mac packetDropDuplicateDetected:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, packetBytes"
+vector 119 Roaming.ap2.wlan.mac packetDropOther:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsOther(packetDropped)
+attr title "packet drops: other, packetBytes"
+vector 120 Roaming.ap2.wlan.radio radioMode:vector ETV
+attr enum OFF,SLEEP,RECEIVER,TRANSMITTER,TRANSCEIVER,SWITCHING
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+attr type enum
+vector 121 Roaming.ap2.wlan.radio receptionState:vector ETV
+attr enum UNDEFINED,IDLE,BUSY,RECEIVING
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+attr type enum
+vector 122 Roaming.ap2.wlan.radio transmissionState:vector ETV
+attr enum UNDEFINED,IDLE,TRANSMITTING
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "Radio transmission state"
+attr type enum
+vector 123 Roaming.ap2.wlan.radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioChannelChanged
+attr title "Radio channel"
+vector 124 Roaming.ap2.wlan packetDropInterfaceDown:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, packetBytes"
+vector 125 Roaming.ap2.wlan packetDropNoCarrier:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, packetBytes"
+vector 126 Roaming.meter.wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 127 Roaming.meter.wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 128 Roaming.meter.wlan[0].mac.dcf.channelAccess.pendingQueue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 129 Roaming.meter.wlan[0].mac.dcf.channelAccess.pendingQueue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 130 Roaming.meter.wlan[0].mac.dcf.channelAccess.pendingQueue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 131 Roaming.meter.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 132 Roaming.meter.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 133 Roaming.meter.wlan[0].mac.dcf.channelAccess.pendingQueue droppedPacketLengthsQueueOverflow:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow"
+attr unit b
+vector 134 Roaming.meter.wlan[0].mac.dcf.channelAccess.pendingQueue flowQueueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+vector 135 Roaming.meter.wlan[0].mac.dcf.channelAccess.pendingQueue flowIncomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(flowPacketLength(demuxFlow(packetPushStarted)))
+attr title "flow specific incoming data rate"
+attr unit bps
+vector 136 Roaming.meter.wlan[0].mac.dcf.channelAccess.pendingQueue flowOutgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(flowPacketLength(demuxFlow(packetPulled)))
+attr title "flow specific outgoing data rate"
+attr unit bps
+vector 137 Roaming.meter.wlan[0].mac.dcf.channelAccess.inProgressFrames queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetDequeued)
+attr title "queueing times"
+vector 138 Roaming.meter.wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length"
+vector 139 Roaming.meter.wlan[0].mac.dcf.channelAccess.contention backoffPeriodGenerated:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "backoff periods"
+vector 140 Roaming.meter.wlan[0].mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(backoffStarted)-count(backoffStopped))
+attr title "backoff active"
+vector 141 Roaming.meter.wlan[0].mac.dcf.channelAccess.contention stateChanged:vector ETV
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode vector
+attr title "contention state changed"
+attr type enum
+vector 142 Roaming.meter.wlan[0].mac.dcf.recipientMacDataService packetDropDuplicateDetected:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, packetBytes"
+vector 143 Roaming.meter.wlan[0].mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "contention window"
+vector 144 Roaming.meter.wlan[0].mac.dcf packetSentToPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent, packetBytes"
+vector 145 Roaming.meter.wlan[0].mac.dcf packetSentToPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, packetBytes"
+vector 146 Roaming.meter.wlan[0].mac.dcf packetSentToPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, packetBytes"
+vector 147 Roaming.meter.wlan[0].mac.dcf packetSentToPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , packetBytes"
+vector 148 Roaming.meter.wlan[0].mac.dcf packetSentToPeerWithRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, packetBytes"
+vector 149 Roaming.meter.wlan[0].mac.dcf packetSentToPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, packetBytes"
+vector 150 Roaming.meter.wlan[0].mac.dcf packetReceivedFromPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received, packetBytes"
+vector 151 Roaming.meter.wlan[0].mac.dcf packetReceivedFromPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, packetBytes"
+vector 152 Roaming.meter.wlan[0].mac.dcf packetReceivedFromPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, packetBytes"
+vector 153 Roaming.meter.wlan[0].mac.dcf packetReceivedFromPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, packetBytes"
+vector 154 Roaming.meter.wlan[0].mac.dcf packetReceivedFromPeerWithRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Retry(packetReceivedFromPeer)
+attr title "packets received: with retry, packetBytes"
+vector 155 Roaming.meter.wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, packetBytes"
+vector 156 Roaming.meter.wlan[0].mac.dcf packetDrop:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropped
+attr title "packet drops, packetBytes"
+vector 157 Roaming.meter.wlan[0].mac.dcf packetDropNotAddressedToUs:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, packetBytes"
+vector 158 Roaming.meter.wlan[0].mac.dcf packetDropQueueOverflow:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, packetBytes"
+vector 159 Roaming.meter.wlan[0].mac.dcf packetDropRetryLimitReached:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, packetBytes"
+vector 160 Roaming.meter.wlan[0].mac.dcf frameSequenceActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(frameSequenceStarted)-count(frameSequenceFinished))
+attr title "frame sequence active"
+vector 161 Roaming.meter.wlan[0].mac.dcf datarateSelected:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "datarates selected"
+vector 162 Roaming.meter.wlan[0].mac.rx nav:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source navChanged
+attr title "network allocation vector"
+vector 163 Roaming.meter.wlan[0].mac packetSentToUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to upper layer, packetBytes"
+vector 164 Roaming.meter.wlan[0].mac packetSentToLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to lower layer, packetBytes"
+vector 165 Roaming.meter.wlan[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from upper layer, packetBytes"
+vector 166 Roaming.meter.wlan[0].mac packetReceivedFromLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from lower layer, packetBytes"
+vector 167 Roaming.meter.wlan[0].mac packetDrop:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropped
+attr title "packet drops, packetBytes"
+vector 168 Roaming.meter.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drops: incorrectly received, packetBytes"
+vector 169 Roaming.meter.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, packetBytes"
+vector 170 Roaming.meter.wlan[0].mac packetDropQueueOverflow:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, packetBytes"
+vector 171 Roaming.meter.wlan[0].mac packetDropRetryLimitReached:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, packetBytes"
+vector 172 Roaming.meter.wlan[0].mac packetDropDuplicateDetected:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, packetBytes"
+vector 173 Roaming.meter.wlan[0].mac packetDropOther:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsOther(packetDropped)
+attr title "packet drops: other, packetBytes"
+vector 174 Roaming.meter.wlan[0].radio radioMode:vector ETV
+attr enum OFF,SLEEP,RECEIVER,TRANSMITTER,TRANSCEIVER,SWITCHING
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+attr type enum
+vector 175 Roaming.meter.wlan[0].radio receptionState:vector ETV
+attr enum UNDEFINED,IDLE,BUSY,RECEIVING
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+attr type enum
+vector 176 Roaming.meter.wlan[0].radio transmissionState:vector ETV
+attr enum UNDEFINED,IDLE,TRANSMITTING
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "Radio transmission state"
+attr type enum
+vector 177 Roaming.meter.wlan[0].radio minSnir:vector ETV
+attr recordingmode vector
+attr source minimumSnir(packetSentToUpper)
+attr title "Min SNIR"
+vector 178 Roaming.meter.wlan[0].radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioChannelChanged
+attr title "Radio channel"
+vector 179 Roaming.meter.wlan[0] packetDropInterfaceDown:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, packetBytes"
+vector 180 Roaming.meter.wlan[0] packetDropNoCarrier:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, packetBytes"
+vector 181 Roaming.meter.wlan[1].mac.dcf.channelAccess.pendingQueue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 182 Roaming.meter.wlan[1].mac.dcf.channelAccess.pendingQueue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 183 Roaming.meter.wlan[1].mac.dcf.channelAccess.pendingQueue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 184 Roaming.meter.wlan[1].mac.dcf.channelAccess.pendingQueue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 185 Roaming.meter.wlan[1].mac.dcf.channelAccess.pendingQueue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 186 Roaming.meter.wlan[1].mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 187 Roaming.meter.wlan[1].mac.dcf.channelAccess.pendingQueue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 188 Roaming.meter.wlan[1].mac.dcf.channelAccess.pendingQueue droppedPacketLengthsQueueOverflow:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow"
+attr unit b
+vector 189 Roaming.meter.wlan[1].mac.dcf.channelAccess.pendingQueue flowQueueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+vector 190 Roaming.meter.wlan[1].mac.dcf.channelAccess.pendingQueue flowIncomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(flowPacketLength(demuxFlow(packetPushStarted)))
+attr title "flow specific incoming data rate"
+attr unit bps
+vector 191 Roaming.meter.wlan[1].mac.dcf.channelAccess.pendingQueue flowOutgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(flowPacketLength(demuxFlow(packetPulled)))
+attr title "flow specific outgoing data rate"
+attr unit bps
+vector 192 Roaming.meter.wlan[1].mac.dcf.channelAccess.inProgressFrames queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetDequeued)
+attr title "queueing times"
+vector 193 Roaming.meter.wlan[1].mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length"
+vector 194 Roaming.meter.wlan[1].mac.dcf.channelAccess.contention backoffPeriodGenerated:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "backoff periods"
+vector 195 Roaming.meter.wlan[1].mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(backoffStarted)-count(backoffStopped))
+attr title "backoff active"
+vector 196 Roaming.meter.wlan[1].mac.dcf.channelAccess.contention stateChanged:vector ETV
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode vector
+attr title "contention state changed"
+attr type enum
+vector 197 Roaming.meter.wlan[1].mac.dcf.recipientMacDataService packetDropDuplicateDetected:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, packetBytes"
+vector 198 Roaming.meter.wlan[1].mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "contention window"
+vector 199 Roaming.meter.wlan[1].mac.dcf packetSentToPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent, packetBytes"
+vector 200 Roaming.meter.wlan[1].mac.dcf packetSentToPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, packetBytes"
+vector 201 Roaming.meter.wlan[1].mac.dcf packetSentToPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, packetBytes"
+vector 202 Roaming.meter.wlan[1].mac.dcf packetSentToPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , packetBytes"
+vector 203 Roaming.meter.wlan[1].mac.dcf packetSentToPeerWithRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, packetBytes"
+vector 204 Roaming.meter.wlan[1].mac.dcf packetSentToPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, packetBytes"
+vector 205 Roaming.meter.wlan[1].mac.dcf packetReceivedFromPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received, packetBytes"
+vector 206 Roaming.meter.wlan[1].mac.dcf packetReceivedFromPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, packetBytes"
+vector 207 Roaming.meter.wlan[1].mac.dcf packetReceivedFromPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, packetBytes"
+vector 208 Roaming.meter.wlan[1].mac.dcf packetReceivedFromPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, packetBytes"
+vector 209 Roaming.meter.wlan[1].mac.dcf packetReceivedFromPeerWithRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Retry(packetReceivedFromPeer)
+attr title "packets received: with retry, packetBytes"
+vector 210 Roaming.meter.wlan[1].mac.dcf packetReceivedFromPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, packetBytes"
+vector 211 Roaming.meter.wlan[1].mac.dcf packetDrop:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropped
+attr title "packet drops, packetBytes"
+vector 212 Roaming.meter.wlan[1].mac.dcf packetDropNotAddressedToUs:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, packetBytes"
+vector 213 Roaming.meter.wlan[1].mac.dcf packetDropQueueOverflow:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, packetBytes"
+vector 214 Roaming.meter.wlan[1].mac.dcf packetDropRetryLimitReached:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, packetBytes"
+vector 215 Roaming.meter.wlan[1].mac.dcf frameSequenceActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(frameSequenceStarted)-count(frameSequenceFinished))
+attr title "frame sequence active"
+vector 216 Roaming.meter.wlan[1].mac.dcf datarateSelected:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "datarates selected"
+vector 217 Roaming.meter.wlan[1].mac.rx nav:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source navChanged
+attr title "network allocation vector"
+vector 218 Roaming.meter.wlan[1].mac packetSentToUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to upper layer, packetBytes"
+vector 219 Roaming.meter.wlan[1].mac packetSentToLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to lower layer, packetBytes"
+vector 220 Roaming.meter.wlan[1].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from upper layer, packetBytes"
+vector 221 Roaming.meter.wlan[1].mac packetReceivedFromLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from lower layer, packetBytes"
+vector 222 Roaming.meter.wlan[1].mac packetDrop:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropped
+attr title "packet drops, packetBytes"
+vector 223 Roaming.meter.wlan[1].mac packetDropIncorrectlyReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drops: incorrectly received, packetBytes"
+vector 224 Roaming.meter.wlan[1].mac packetDropNotAddressedToUs:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, packetBytes"
+vector 225 Roaming.meter.wlan[1].mac packetDropQueueOverflow:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, packetBytes"
+vector 226 Roaming.meter.wlan[1].mac packetDropRetryLimitReached:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, packetBytes"
+vector 227 Roaming.meter.wlan[1].mac packetDropDuplicateDetected:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, packetBytes"
+vector 228 Roaming.meter.wlan[1].mac packetDropOther:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsOther(packetDropped)
+attr title "packet drops: other, packetBytes"
+vector 229 Roaming.meter.wlan[1].radio radioMode:vector ETV
+attr enum OFF,SLEEP,RECEIVER,TRANSMITTER,TRANSCEIVER,SWITCHING
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+attr type enum
+vector 230 Roaming.meter.wlan[1].radio receptionState:vector ETV
+attr enum UNDEFINED,IDLE,BUSY,RECEIVING
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+attr type enum
+vector 231 Roaming.meter.wlan[1].radio transmissionState:vector ETV
+attr enum UNDEFINED,IDLE,TRANSMITTING
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "Radio transmission state"
+attr type enum
+vector 232 Roaming.meter.wlan[1].radio minSnir:vector ETV
+attr recordingmode vector
+attr source minimumSnir(packetSentToUpper)
+attr title "Min SNIR"
+vector 233 Roaming.meter.wlan[1].radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioChannelChanged
+attr title "Radio channel"
+vector 234 Roaming.meter.wlan[1] packetDropInterfaceDown:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, packetBytes"
+vector 235 Roaming.meter.wlan[1] packetDropNoCarrier:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, packetBytes"
+177	13	0.109862707155	2495581.9445426604
+177	47	0.30986270731	2418265.630834129
+177	81	0.509862707603	734440.2477596528
+177	117	0.709862708019	3575045.9638257446
+177	151	0.909862708537	3026020.3843272906
+177	185	1.109862709141	345610.1455065487
+177	219	1.309862709813	863474.0557178669
+177	255	1.509862710539	91631.55842826751
+177	289	1.709862711309	1689846.8131751209
+177	323	1.909862712115	149734.7860519847
+177	359	2.109862712948	2178632.043994193
+177	393	2.309862713805	295490.49752365676
+177	427	2.509862714681	303204.06604895426
+177	461	2.709862715572	383835.91234932427
+177	495	2.909862716476	366261.6872149831
+177	531	3.10986271739	149584.53285768162
+177	565	3.309862718315	318631.54246234545
+177	599	3.509862719246	134598.67772666644
+177	633	3.709862720185	268866.4759893768
+177	669	3.90986272113	40469.82939932993
+177	703	4.109862722079	129019.51176622199
+177	737	4.309862723033	64254.59098064904
+177	771	4.509862723991	40474.76502602228
+177	805	4.709862724952	6292.381286435828
+177	839	4.909862725917	79379.75431273905
+177	875	5.109862726884	194900.11063015054
+177	909	5.309862727853	92199.23414952136
+177	945	5.509862728825	42497.03026949153
+177	979	5.709862729798	114116.79073542161
+177	1013	5.909862730774	152751.8471455944
+177	1047	6.10986273175	21802.39989113002
+177	1083	6.309862732729	8628.778694882369
+177	1117	6.509862733709	24574.866926360046
+177	1153	6.709862734689	18284.363735606395
+177	1189	6.909862735672	29438.727716941747
+177	1225	7.109862736655	16815.579350719436
+177	1261	7.309862737639	20098.89906484489
+177	1295	7.509862738623	21600.164302226996
+177	1331	7.709862739609	43069.78975611994
+177	1365	7.909862740596	25152.811714976244
+177	1399	8.109862741583	12526.111727322423
+177	1435	8.30986274257	28430.048959021624
+177	1471	8.509862743559	65960.61558111239
+177	1507	8.709862744548	10021.99767961211
+177	1543	8.909862745537	7370.872129935212
+177	1579	9.109862746527	38015.024936457994
+177	1615	9.309862747517	25770.74320144844
+177	1649	9.509862748508	10453.323925948072
+177	1685	9.709862749499	4666.128078004456
+177	1719	9.909862750491	3399.9190609675097
+177	1753	10.109862751483	4037.575843287538
+177	1789	10.309862752475	4557.729193261179
+177	1825	10.509862753468	2974.322600172479
+177	1861	10.709862754461	5650.840746538035
+177	1897	10.909862755454	2491.6037043257734
+177	1931	11.109862756447	12869.805656268185
+177	1965	11.309862757441	935.4978255446229
+177	2001	11.509862758435	6710.303520881857
+177	2037	11.709862759429	5808.1729324345
+177	2073	11.909862760423	6153.89409079049
+177	2107	12.109862761418	3149.842675679442
+177	2143	12.309862762413	5167.187841350231
+177	2179	12.509862763408	2665.0609657073437
+177	2213	12.709862764403	6684.882631715617
+177	2247	12.909862765398	2892.713023411855
+177	2283	13.109862766394	1039.8455144541892
+177	2319	13.309862767389	5381.564242544319
+177	2355	13.509862768385	10134.347586868487
+177	2391	13.709862769381	3598.62419298064
+177	2425	13.909862770377	1106.2807536567475
+177	2461	14.109862771373	5798.034663702474
+177	2497	14.309862772369	2789.111299662452
+177	2533	14.509862773366	1834.5641767317973
+177	2569	14.709862774362	664.8185047721338
+177	2605	14.909862775359	1339.761768347872
+177	2641	15.109862776356	3046.451489642811
+177	2677	15.309862777353	1353.8429428754307
+177	2713	15.50986277835	550.938437343137
+177	2749	15.709862779347	798.5042365383845
+177	2785	15.909862780344	1276.2795430125057
+177	2821	16.109862781341	6415.949656333646
+177	2857	16.309862782339	342.9874494892631
+177	2893	16.509862783336	7403.740510088546
+177	2929	16.709862784333	444.7670357836721
+177	2965	16.909862785331	673.6216182359182
+177	3001	17.109862786329	561.4168403523227
+177	3037	17.309862787326	3141.410693498996
+177	3073	17.509862788324	9852.292735729185
+177	3143	17.90986279032	364.1937748123475
+177	3179	18.109862791318	531.4334370267779
+177	3249	18.509862793314	362.90323293752346
+177	3353	19.109862796308	3142.789007150759
+177	3389	19.309862797307	1764.3806213471803
+177	3425	19.509862798305	1119.2613763403454
+177	3461	19.709862799303	1048.9247092855694
+177	3497	19.909862800302	1228.0437496354373
+177	3533	20.1098628013	874.2852432480495
+177	3569	20.309862802299	476.6371525166936
+177	3605	20.509862803297	1108.8797581740635
+177	3641	20.709862804296	397.7098298276686
+177	3677	20.909862805295	743.9047634469398
+177	3713	21.109862806293	1015.9469953568772
+177	3749	21.309862807292	793.615393175258
+177	3785	21.509862808291	4169.524491046152
+177	3821	21.70986280929	1322.6813349816605
+177	3857	21.909862810288	6615.750912621373
+177	3893	22.109862811287	616.0345513208553
+177	3929	22.309862812286	359.54784500588676
+177	3965	22.509862813285	403.10793289547706
+177	4001	22.709862814284	3839.2379901560157
+177	4071	23.109862816282	1611.273279073878
+177	4107	23.309862817281	679.3534818148329
+177	4177	23.709862819279	655.4171952102187
+177	4247	24.109862821278	2352.8248599836065
+177	4317	24.509862823276	1260.5741310292171
+177	4353	24.709862824275	1466.8985130130918
+177	4389	24.909862825274	483.8356534866803
+177	4459	25.309862827273	596.811349053085
+177	4495	25.509862828272	1053.1458895170633
+177	4599	26.10986283127	490.07095413744827
+177	4635	26.30986283227	1224.8230689961595
+177	4705	26.709862834269	318.82721872401936
+177	4741	26.909862835268	476.10279229928767
+177	4845	27.509862838267	474.09047164778855
+177	4949	28.109862841265	762.966370731024
+177	5019	28.509862843264	2338.197857515347
+177	5055	28.709862844264	338.55400576450444
+177	5159	29.309862847263	581.7789991897383
+177	5195	29.509862848263	944.4093005443983
+177	5265	29.909862850262	883.698865762289
+177	5369	30.509862853261	874.466838354565
+177	5439	30.909862855261	1024.1592418255068
+177	5509	31.30986285726	929.0043320961041
+177	5579	31.70986285926	515.547904363515
+177	5717	32.509862863259	728.3055231861447
+177	5889	33.509862868258	355.24839950472455
+177	6025	34.309862870709	517.9499947017395
+177	6123	34.909862870709	2682.213733961472
+177	6189	35.309862870709	435.2879386510386
+177	6319	36.109862870709	535.8504685372164
+177	6385	36.509862870709	737.4136397916021
+177	6451	36.909862870709	505.9606159539405
+177	6581	37.709862870709	349.09937339738804
+177	6807	39.109862870709	524.6835073452681
+177	6873	39.509862870709	410.42808122714257
+177	7195	41.509862870709	1192.2008668649883
+177	7325	42.309862870709	321.968785989957
+177	7487	43.309862870709	605.8076656336788
+177	7617	44.109862870709	425.840059104597
+177	7651	44.309862870709	933.7696126943565
+177	7717	44.709862870709	333.68493821679937
+177	7783	45.109862870709	535.5481496180635
+177	7881	45.709862870709	578.7095825461229
+177	7947	46.109862870709	389.0583110290535
+177	8045	46.709862870709	415.49607302015283
+177	8335	48.509862870709	402.957666997489
+177	8529	49.709862870709	330.0821689668124
+177	8723	50.909862870709	853.6141945674624
+177	8981	52.509862870709	726.897803895595
+177	9015	52.709862870709	760.3874898182354
+177	9113	53.309862870709	407.29454916308873
+177	9211	53.909862870709	331.2520255017564
+177	9309	54.509862870709	880.0520818016622
+177	9535	55.909862870709	3620.730520225098
+177	9569	56.109862870709	466.50573247981475
+177	9731	57.109862870709	407.2642251157628
+177	9893	58.109862870709	751.2550115277718
+177	10023	58.909862870709	480.2558468027021
+177	10153	59.709862870709	337.74645016791436
+177	10219	60.109862870709	709.584102216165
+177	10477	61.709862870709	340.90583381872295
+177	10607	62.509862870709	477.3893567810431
+177	10705	63.109862870709	441.40166101208627
+177	10995	64.909862870709	671.7844016366599
+177	11189	66.109862870709	1138.8660861160827
+177	11543	68.309862870709	485.1031372038433
+177	11897	70.509862870709	1899.5428878628231
+177	12059	71.509862870709	360.83724709294717
+177	12189	72.309862870709	329.5739905043488
+177	12223	72.509862870709	490.50781541489306
+177	12289	72.909862870709	572.0034902912249
+177	12579	74.709862870709	398.3794140696678
+177	12613	74.909862870709	3056.1870289772537
+177	12647	75.109862870709	381.89578803123646
+177	12681	75.309862870709	340.03824501377875
+177	12747	75.709862870709	1477.03668255975
+177	12813	76.109862870709	384.91478816131985
+177	13103	77.909862870709	329.13084154804034
+177	13137	78.109862870709	568.1412456516015
+177	13427	79.909862870709	386.1008673243847
+177	13589	80.909862870709	581.8856700765059
+177	13847	82.509862870709	377.71244388877807
+177	13913	82.909862870709	770.166852621671
+177	14107	84.109862870709	703.2872118097425
+177	14237	84.909862870709	348.0695051463892
+177	14623	87.309862870709	438.2745414787294
+177	14753	88.109862870709	357.5329355198354
+177	14787	88.309862870709	341.8088439591017
+177	14949	89.309862870709	319.03383345265433
+177	14983	89.509862870709	637.089028772696
+177	15145	90.509862870709	356.79328934005855
+177	15467	92.509862870709	489.3394337910237
+177	15533	92.909862870709	1879.5621250173658
+177	15887	95.109862870709	357.03555254181873
+177	15921	95.309862870709	613.310233679437
+177	16051	96.109862870709	366.7636951675362
+177	16085	96.309862870709	334.17660112303247
+177	16119	96.509862870709	664.9021549080528
+177	16537	99.109862870709	407.5375576761876
+177	16603	99.509862870709	522.215113576405
+177	16701	100.109862870709	368.8227965846405
+177	16767	100.509862870709	403.0625244829038
+177	16897	101.309862870709	329.7588568054952
+177	16995	101.909862870709	898.875722898472
+177	17189	103.109862870709	401.86968759023085
+177	17223	103.309862870709	445.8533985589539
+177	17321	103.909862870709	823.6612294346745
+177	17515	105.109862870709	610.8007952307188
+177	17581	105.509862870709	1972.2213295294534
+177	17679	106.109862870709	364.01947529457124
+177	18129	108.909862870709	802.5103410092794
+177	18387	110.509862870709	590.0556998854988
+177	18421	110.709862870709	348.8362518511058
+177	18839	113.309862870709	419.90950945638724
+177	19001	114.309862870709	323.2280144005187
+177	19067	114.709862870709	478.03650506742486
+177	19101	114.909862870709	587.3316266254106
+177	19135	115.109862870709	675.5191020605535
+177	19233	115.709862870709	946.7205282274159
+177	19683	118.509862870709	645.755154637259
+177	19717	118.709862870709	523.839414156713
+177	19879	119.709862870709	481.8939229191385
+232	98	0.518669090934	794.3074456614872
+232	236	1.318669086934	360.21300370753227
+232	340	1.918669083935	1165.3481370850081
+232	512	2.918669078936	438.397837796905
+232	650	3.718669074937	316.95704160843576
+232	856	4.918669068939	720.0070067025849
+232	926	5.318669066939	668.2286103619349
+232	1064	6.118669062941	883.0091691101838
+232	1134	6.518669060942	2983.602452021692
+232	1170	6.718669059943	508.17951662782895
+232	1206	6.918669058943	804.451809044841
+232	1242	7.118669057944	325.3546379833286
+232	1312	7.518669055945	1152.3798751680458
+232	1416	8.118669052946	1693.3200928549152
+232	1452	8.318669051947	344.7469890410587
+232	1488	8.518669050948	587.8307000184501
+232	1524	8.718669049948	334.94771070605634
+232	1560	8.918669048949	947.2261627202872
+232	1596	9.11866904795	574.0067471466328
+232	1666	9.518669045951	649.1975818247539
+232	1770	10.118669042954	887.4959276394135
+232	1806	10.318669041955	697.1476466379792
+232	1842	10.518669040956	464.6816947750511
+232	1878	10.718669039957	1270.801734728288
+232	1982	11.31866903696	2349.8486869476706
+232	2018	11.518669035961	544.5674968294903
+232	2054	11.718669034962	560.1728788891418
+232	2124	12.118669032964	524.9380309612092
+232	2160	12.318669031965	3174.4776696595436
+232	2264	12.918669028969	960.8467685160437
+232	2300	13.11866902797	723.4035726412068
+232	2336	13.318669026972	3349.4875293868877
+232	2372	13.518669025973	458.0953071261727
+232	2442	13.918669023976	1260.3972427583367
+232	2478	14.118669022977	838.854761392329
+232	2514	14.318669021979	417.58867564156293
+232	2550	14.518669020981	960.38227079966
+232	2586	14.718669019982	399.0240297002636
+232	2622	14.918669018984	1171.958249423155
+232	2658	15.118669017986	1012.6857823146707
+232	2694	15.318669016988	410.953626966687
+232	2730	15.518669015989	720.4909661615281
+232	2766	15.718669014991	1500.4672197249072
+232	2802	15.918669013993	656.5433260762576
+232	2838	16.118669012995	603.0680917133906
+232	2874	16.318669011998	1761.3116421010664
+232	2910	16.518669011	2748.030277008426
+232	2946	16.718669010002	547.845233978532
+232	2982	16.918669009004	1428.4586604635915
+232	3018	17.118669008007	801.7527590379585
+232	3054	17.318669007009	11252.033579542776
+232	3090	17.518669006012	3846.790750005839
+232	3124	17.718669005014	774.6964813509413
+232	3160	17.918669004017	1634.872397561976
+232	3196	18.11866900302	4813.920296937569
+232	3230	18.318669002023	1222.7842403606346
+232	3266	18.518669001025	1775.7803007065656
+232	3300	18.718669000029	653.4963777099091
+232	3334	18.918668999032	2357.1179521556523
+232	3370	19.118668998035	619.4278043884444
+232	3406	19.318668997038	8248.877843453281
+232	3442	19.518668996042	5681.384686584422
+232	3478	19.718668995045	23887.956473720224
+232	3514	19.918668994049	2017.0612303680496
+232	3550	20.118668993053	955.9977802462568
+232	3586	20.318668992057	2131.1428042255757
+232	3622	20.518668991061	1691.2378606861405
+232	3658	20.718668990065	6738.113247493783
+232	3694	20.91866898907	3840.7060321635918
+232	3730	21.118668988074	1930.3654549239745
+232	3766	21.318668987079	5880.322029520393
+232	3802	21.518668986084	1397.6251195185903
+232	3838	21.718668985089	1613.2178601176238
+232	3874	21.918668984094	4001.6881588331557
+232	3910	22.118668983099	3860.8599604574306
+232	3946	22.318668982105	1131.1124169971456
+232	3982	22.518668981111	8917.732195281478
+232	4018	22.718668980117	9754.37232915627
+232	4052	22.918668979123	1793.8653131408155
+232	4088	23.11866897813	4326.89442182268
+232	4124	23.318668977137	24033.324196264646
+232	4158	23.518668976144	2913.5514742857536
+232	4194	23.718668975152	4360.712383232094
+232	4228	23.918668974159	4505.898061529799
+232	4264	24.118668973167	15138.13128071329
+232	4298	24.318668972176	8721.299913976598
+232	4334	24.518668971185	11450.625376453998
+232	4370	24.718668970194	34798.01682172634
+232	4406	24.918668969204	45011.24702015386
+232	4440	25.118668968214	9147.17992890428
+232	4476	25.318668967225	26142.221832178213
+232	4512	25.518668966236	54995.3333231959
+232	4546	25.718668965247	5680.175427487641
+232	4580	25.91866896426	3449.4615343452915
+232	4616	26.118668963273	13758.576734436556
+232	4652	26.318668962286	9380.990081450822
+232	4686	26.518668961301	27924.654769600667
+232	4722	26.718668960316	16107.598917841715
+232	4758	26.918668959332	26970.392212046576
+232	4792	27.118668958349	38955.23731388054
+232	4826	27.318668957367	21312.45830838759
+232	4862	27.518668956387	32762.365279263886
+232	4896	27.718668955407	13054.779782061383
+232	4930	27.918668954429	33289.89152061753
+232	4966	28.118668953452	30853.756076426034
+232	5000	28.318668952477	24806.107813361334
+232	5036	28.518668951504	113755.90473953566
+232	5072	28.718668950533	33852.496899145925
+232	5106	28.918668949563	79594.76967998789
+232	5140	29.118668948597	35971.40694218009
+232	5176	29.318668947633	177367.68788156146
+232	5212	29.518668946672	106130.07419983842
+232	5246	29.718668945715	46056.73632177209
+232	5282	29.918668944761	97967.25571103742
+232	5316	30.118668943812	146191.18025954964
+232	5350	30.318668942869	33976.72080455869
+232	5386	30.518668941931	186588.25261861482
+232	5420	30.718668941	927747.5287867977
+232	5456	30.918668940077	39770.52844636319
+232	5490	31.118668939164	234304.74338830405
+232	5526	31.318668938262	462747.34821398574
+232	5560	31.518668937373	47634.95682769841
+232	5596	31.7186689365	1847352.7844080438
+232	5630	31.918668935646	136235.16534561903
+232	5664	32.118668934816	499935.0727731494
+232	5698	32.318668934015	1325599.4387441245
+232	5734	32.51866893325	994811.3410821189
+232	5768	32.718668932531	2503173.0676216274
+232	5802	32.918668931868	4150017.148989906
+232	5836	33.118668931275	1024485.6566156611
+232	5870	33.31866893077	4104120.6924930657
+232	5906	33.518668930371	4412422.666931629
+232	5940	33.718668930096	2713652.2067868384
+232	5974	33.918668929962	1483575.6200104882
+232	6007	34.118668929949	988031.7776892346
+232	6041	34.318668929949	7431223.083404537
+232	6073	34.518668929949	2390740.608358049
+232	6105	34.718668929949	6406463.775701021
+232	6139	34.918668929949	9618471.355003098
+232	6171	35.118668929949	6606760.47492685
+232	6205	35.318668929949	6057608.031720709
+232	6237	35.518668929949	63317836.20395189
+232	6269	35.718668929949	16813526.026144046
+232	6301	35.918668929949	4671094.459810842
+232	6335	36.118668929949	2843222.940156123
+232	6367	36.318668929949	4853447.895689894
+232	6401	36.518668929949	2347155.3675936055
+232	6433	36.718668929949	7320150.29252968
+232	6467	36.918668929949	5288220.602726516
+232	6499	37.118668929949	4209021.931104379
+232	6531	37.318668929949	5139871.187249731
+232	6563	37.518668929949	1052280.1972037556
+232	6597	37.718668929949	2104488.6291938582
+232	6629	37.918668929949	21947996.405639164
+232	6661	38.118668929949	4427255.664347603
+232	6693	38.318668929949	3881041.3727840697
+232	6725	38.518668929949	10556193.375957875
+232	6757	38.718668929949	5729233.226744582
+232	6789	38.918668929949	820404.5405325234
+232	6823	39.118668929949	959098.8256342144
+232	6855	39.318668929949	5697583.658409422
+232	6889	39.518668929949	9193347.214622298
+232	6921	39.718668929949	693978.71622095
+232	6953	39.918668929949	9217112.650041439
+232	6985	40.118668929949	2290294.0040462906
+232	7017	40.318668929949	1686907.220178207
+232	7049	40.518668929949	4001842.0815822864
+232	7081	40.718668929949	1231719.4033930018
+232	7113	40.918668929949	14064776.733861467
+232	7145	41.118668929949	6108837.550097488
+232	7177	41.318668929949	2646442.2514409595
+232	7211	41.518668929949	42889530.824556075
+232	7243	41.718668929949	3969123.7188721756
+232	7275	41.918668929949	8370621.491451036
+232	7307	42.118668929949	6146178.924845764
+232	7341	42.318668929949	2232550.17729319
+232	7373	42.518668929949	18295421.66171902
+232	7405	42.718668929949	4479268.626730227
+232	7437	42.918668929949	4488127.488943306
+232	7469	43.118668929949	19567928.82755697
+232	7503	43.318668929949	11399897.975740159
+232	7535	43.518668929949	21171287.76074366
+232	7567	43.718668929949	23771955.2130401
+232	7599	43.918668929949	6705297.021728069
+232	7633	44.118668929949	5929966.908377896
+232	7667	44.318668929949	3353998.523697099
+232	7699	44.518668929949	1701661.928146324
+232	7733	44.718668929949	16858337.94574304
+232	7765	44.918668929949	5266196.090523093
+232	7799	45.118668929949	2176485.0442210594
+232	7831	45.318668929949	5110687.480211712
+232	7863	45.518668929949	5665990.218483221
+232	7897	45.718668929949	364175.3461911182
+232	7929	45.918668929949	17695574.52468307
+232	7963	46.118668929949	4638488.53162223
+232	7995	46.318668929949	2899383.021053924
+232	8027	46.518668929949	593263.0461849361
+232	8061	46.718668929949	4258434.735695066
+232	8093	46.918668929949	2313116.3336775764
+232	8125	47.118668929949	22161789.856716197
+232	8157	47.318668929949	37575135.71247872
+232	8189	47.518668929949	7545498.815690173
+232	8221	47.718668929949	422199.4034245279
+232	8253	47.918668929949	3052066.60776718
+232	8285	48.118668929949	3832663.305445022
+232	8317	48.318668929949	8104206.1256154645
+232	8351	48.518668929949	2433809.6358146816
+232	8383	48.718668929949	622191.3154897486
+232	8415	48.918668929949	5110048.677194839
+232	8447	49.118668929949	3011225.34265007
+232	8479	49.318668929949	3126858.8150945646
+232	8511	49.518668929949	4271381.464624153
+232	8545	49.718668929949	2739029.6044147867
+232	8577	49.918668929949	5754677.431862589
+232	8609	50.118668929949	3680969.5127172833
+232	8641	50.318668929949	1357109.928330477
+232	8673	50.518668929949	12009390.599138876
+232	8705	50.718668929949	2903553.496175435
+232	8739	50.918668929949	14020553.47448404
+232	8771	51.118668929949	2373969.4886906077
+232	8803	51.318668929949	9470322.249588665
+232	8835	51.518668929949	1508498.7925053502
+232	8867	51.718668929949	1537492.6883960727
+232	8899	51.918668929949	6767710.384569214
+232	8931	52.118668929949	3438559.0660634204
+232	8963	52.318668929949	7461437.055739235
+232	8997	52.518668929949	2255975.0952797607
+232	9031	52.718668929949	19670346.485787816
+232	9063	52.918668929949	17539923.446269292
+232	9095	53.118668929949	6952084.836450441
+232	9129	53.318668929949	2081029.5746985083
+232	9161	53.518668929949	2263337.6286379662
+232	9193	53.718668929949	1012445.7117481806
+232	9227	53.918668929949	6848914.816143992
+232	9259	54.118668929949	1047567.0680746408
+232	9291	54.318668929949	9613685.524075484
+232	9325	54.518668929949	6937598.6570109585
+232	9357	54.718668929949	3430327.436927718
+232	9389	54.918668929949	1539926.1837065383
+232	9421	55.118668929949	1501276.897071453
+232	9453	55.318668929949	20950655.626246355
+232	9485	55.518668929949	2486407.498934268
+232	9517	55.718668929949	1432784.9827410367
+232	9551	55.918668929949	2050162.216438553
+232	9585	56.118668929949	913158.8587482775
+232	9617	56.318668929949	48192736.32761366
+232	9649	56.518668929949	5344471.135500997
+232	9681	56.718668929949	1909428.7480575575
+232	9713	56.918668929949	5294553.451284684
+232	9747	57.118668929949	4832696.775663702
+232	9779	57.318668929949	10671817.904710125
+232	9811	57.518668929949	5918919.749501453
+232	9843	57.718668929949	3044133.90134032
+232	9875	57.918668929949	1238966.0353476652
+232	9909	58.118668929949	3209881.209838528
+232	9941	58.318668929949	1037891.6349670058
+232	9973	58.518668929949	1797070.1393603499
+232	10005	58.718668929949	784271.566653659
+232	10039	58.918668929949	9860448.860675545
+232	10071	59.118668929949	3969943.621084662
+232	10103	59.318668929949	11634992.166873632
+232	10135	59.518668929949	5645786.379338547
+232	10169	59.718668929949	6358772.830078717
+232	10201	59.918668929949	17869009.617398884
+232	10235	60.118668929949	10892267.999709416
+232	10267	60.318668929949	9912274.183248766
+232	10299	60.518668929949	2015014.213902558
+232	10331	60.718668929949	19111224.160871085
+232	10363	60.918668929949	5242800.6661138935
+232	10395	61.118668929949	13649494.79651333
+232	10427	61.318668929949	5916113.505045762
+232	10459	61.518668929949	12596834.279380653
+232	10493	61.718668929949	2753120.8689053333
+232	10525	61.918668929949	16379713.568895696
+232	10557	62.118668929949	1770075.5762620443
+232	10589	62.318668929949	8893549.371935204
+232	10623	62.518668929949	1985799.8795566193
+232	10655	62.718668929949	1412348.5468952255
+232	10687	62.918668929949	13903872.265524032
+232	10721	63.118668929949	9173054.806612356
+232	10753	63.318668929949	9898960.700246327
+232	10785	63.518668929949	8121121.040618642
+232	10817	63.718668929949	26531323.862689923
+232	10849	63.918668929949	9174914.314723087
+232	10881	64.118668929949	9619559.110401947
+232	10913	64.318668929949	655501.7396874665
+232	10945	64.518668929949	8570980.554668427
+232	10977	64.718668929949	5433009.347307464
+232	11011	64.918668929949	50390886.71498043
+232	11043	65.118668929949	8707782.521486312
+232	11075	65.318668929949	48333748.41105809
+232	11107	65.518668929949	13235417.22177618
+232	11139	65.718668929949	2979346.388916705
+232	11171	65.918668929949	1511245.4900725617
+232	11205	66.118668929949	7543600.313884977
+232	11237	66.318668929949	13065704.049031097
+232	11269	66.518668929949	16121907.714892205
+232	11301	66.718668929949	1449917.8968032086
+232	11333	66.918668929949	2879779.7426220835
+232	11365	67.118668929949	4872510.747847292
+232	11397	67.318668929949	7240878.297862337
+232	11429	67.518668929949	3723880.942467703
+232	11461	67.718668929949	6070490.948526555
+232	11493	67.918668929949	16394057.397026826
+232	11525	68.118668929949	5356882.710081794
+232	11559	68.318668929949	3837575.4006240033
+232	11591	68.518668929949	4165861.189353257
+232	11623	68.718668929949	3013117.101960713
+232	11655	68.918668929949	4803952.978114972
+232	11687	69.118668929949	645138.1472160429
+232	11719	69.318668929949	2522272.8178875423
+232	11751	69.518668929949	21869590.403819524
+232	11783	69.718668929949	1293436.2598568108
+232	11815	69.918668929949	7125073.423240896
+232	11847	70.118668929949	3063451.0519851767
+232	11879	70.318668929949	12689369.964209197
+232	11913	70.518668929949	3003532.631986346
+232	11945	70.718668929949	6234783.617593533
+232	11977	70.918668929949	4982950.398027984
+232	12009	71.118668929949	6742984.246850698
+232	12041	71.318668929949	3132553.24757016
+232	12075	71.518668929949	9020048.495671244
+232	12107	71.718668929949	1287695.838695403
+232	12139	71.918668929949	3305531.9605971016
+232	12171	72.118668929949	23377378.91707897
+232	12205	72.318668929949	2144207.370270817
+232	12239	72.518668929949	3773949.8277256936
+232	12271	72.718668929949	2740519.473429183
+232	12305	72.918668929949	1441970.9496620079
+232	12337	73.118668929949	6536155.058998842
+232	12369	73.318668929949	9115696.41030408
+232	12401	73.518668929949	2988979.891432043
+232	12433	73.718668929949	10932315.749116858
+232	12465	73.918668929949	19399180.898821138
+232	12497	74.118668929949	4395601.590845893
+232	12529	74.318668929949	11376364.8965187
+232	12561	74.518668929949	9802430.278096003
+232	12595	74.718668929949	5719249.110802704
+232	12629	74.918668929949	4196688.826806309
+232	12663	75.118668929949	10879111.800300673
+232	12697	75.318668929949	7504223.718595255
+232	12729	75.518668929949	5563818.106958506
+232	12763	75.718668929949	574105.8097200228
+232	12795	75.918668929949	11217428.945325736
+232	12829	76.118668929949	3277334.805761652
+232	12861	76.318668929949	1701857.5511149468
+232	12893	76.518668929949	6227098.990759452
+232	12925	76.718668929949	5310933.207279251
+232	12957	76.918668929949	15037795.708617313
+232	12989	77.118668929949	44886030.481769145
+232	13021	77.318668929949	39382398.89723129
+232	13053	77.518668929949	17664935.394906536
+232	13085	77.718668929949	4686728.8949662745
+232	13119	77.918668929949	1822430.9365856072
+232	13153	78.118668929949	7309703.58862833
+232	13185	78.318668929949	2078210.592097532
+232	13217	78.518668929949	16124580.9791601
+232	13249	78.718668929949	7522386.2108707195
+232	13281	78.918668929949	4571329.406997211
+232	13313	79.118668929949	8172495.067402781
+232	13345	79.318668929949	1527260.0265417495
+232	13377	79.518668929949	15148098.384943634
+232	13409	79.718668929949	7540511.551447115
+232	13443	79.918668929949	6595993.207322122
+232	13475	80.118668929949	24108980.81225154
+232	13507	80.318668929949	6766314.4493414285
+232	13539	80.518668929949	4306018.413593116
+232	13571	80.718668929949	4129184.046009436
+232	13605	80.918668929949	2178195.081116096
+232	13637	81.118668929949	3931214.1399804563
+232	13669	81.318668929949	6328297.307084951
+232	13701	81.518668929949	443528.06625216524
+232	13733	81.718668929949	11065380.108093819
+232	13765	81.918668929949	2729348.24758806
+232	13797	82.118668929949	8670557.35985692
+232	13829	82.318668929949	3392594.2749768337
+232	13863	82.518668929949	3266166.8793467013
+232	13895	82.718668929949	7711181.908083604
+232	13929	82.918668929949	2238815.211876266
+232	13961	83.118668929949	1448202.812038064
+232	13993	83.318668929949	3008218.647802801
+232	14025	83.518668929949	6334209.043199462
+232	14057	83.718668929949	2354538.230397775
+232	14089	83.918668929949	3309854.3957283655
+232	14123	84.118668929949	1590364.3429624736
+232	14155	84.318668929949	10919526.481481457
+232	14187	84.518668929949	12874131.822819082
+232	14219	84.718668929949	1838733.820710878
+232	14253	84.918668929949	25918205.265891414
+232	14285	85.118668929949	6513389.49244039
+232	14317	85.318668929949	2272330.173138635
+232	14349	85.518668929949	10116905.50366272
+232	14381	85.718668929949	3285215.1472186586
+232	14413	85.918668929949	7693964.027025382
+232	14445	86.118668929949	6970142.182818495
+232	14477	86.318668929949	4299340.844695281
+232	14509	86.518668929949	1167296.7846713976
+232	14541	86.718668929949	11024610.671776734
+232	14573	86.918668929949	10027226.75912137
+232	14605	87.118668929949	1013792.5707499726
+232	14639	87.318668929949	2627402.828913522
+232	14671	87.518668929949	6214636.875146103
+232	14703	87.718668929949	971972.107303356
+232	14735	87.918668929949	3533325.0756292623
+232	14769	88.118668929949	1840394.0130113622
+232	14803	88.318668929949	5257613.576947173
+232	14835	88.518668929949	4769907.286096658
+232	14867	88.718668929949	3193616.731785801
+232	14899	88.918668929949	2009833.3259891714
+232	14931	89.118668929949	10096941.649407888
+232	14965	89.318668929949	3074256.495850118
+232	14999	89.518668929949	1442063.8587956757
+232	15031	89.718668929949	1987350.3363781266
+232	15063	89.918668929949	10245954.548643578
+232	15095	90.118668929949	17230831.79840069
+232	15127	90.318668929949	10192331.967567055
+232	15161	90.518668929949	9516968.484009542
+232	15193	90.718668929949	4692937.590918609
+232	15225	90.918668929949	1995647.7778076965
+232	15257	91.118668929949	1179784.962796116
+232	15289	91.318668929949	2907448.407002638
+232	15321	91.518668929949	5604328.4427715605
+232	15353	91.718668929949	8241980.587469552
+232	15385	91.918668929949	6072643.039327542
+232	15417	92.118668929949	5224797.433508653
+232	15449	92.318668929949	789140.1736486973
+232	15483	92.518668929949	2653788.2943291375
+232	15515	92.718668929949	1420172.2604526498
+232	15549	92.918668929949	5649352.0646244455
+232	15581	93.118668929949	2344483.747277784
+232	15613	93.318668929949	2426826.252905016
+232	15645	93.518668929949	8811151.322908252
+232	15677	93.718668929949	8676381.89310964
+232	15709	93.918668929949	668516.6724424609
+232	15741	94.118668929949	18680792.603480306
+232	15773	94.318668929949	3738425.123216641
+232	15805	94.518668929949	836935.2348541963
+232	15837	94.718668929949	4204233.774921666
+232	15869	94.918668929949	11048483.33945458
+232	15903	95.118668929949	6885867.840549454
+232	15937	95.318668929949	2935689.481226826
+232	15969	95.518668929949	6188615.845615574
+232	16001	95.718668929949	1665260.5430152041
+232	16033	95.918668929949	4596018.130920395
+232	16067	96.118668929949	23236868.20959146
+232	16101	96.318668929949	5403943.963482647
+232	16135	96.518668929949	4030101.9391186135
+232	16167	96.718668929949	9562621.372382214
+232	16199	96.918668929949	5034446.4015702745
+232	16231	97.118668929949	6282389.276371549
+232	16263	97.318668929949	3678941.70137346
+232	16295	97.518668929949	2712790.4527011076
+232	16327	97.718668929949	4451438.788716759
+232	16359	97.918668929949	10870119.511079613
+232	16391	98.118668929949	7227762.376316413
+232	16423	98.318668929949	2194996.643985687
+232	16455	98.518668929949	26855963.472572923
+232	16487	98.718668929949	5434890.67811714
+232	16519	98.918668929949	7666944.962408027
+232	16553	99.118668929949	4879280.585973976
+232	16585	99.318668929949	602857.93486544
+232	16619	99.518668929949	4669241.780879259
+232	16651	99.718668929949	1448384.5456665375
+232	16683	99.918668929949	26195559.562619396
+232	16717	100.118668929949	4572880.942552041
+232	16749	100.318668929949	8876540.669217158
+232	16783	100.518668929949	5780309.334042011
+232	16815	100.718668929949	2700562.47720559
+232	16847	100.918668929949	3075409.8587609185
+232	16879	101.118668929949	3664404.7833466483
+232	16913	101.318668929949	8382176.950093608
+232	16945	101.518668929949	8411932.264460439
+232	16977	101.718668929949	6975587.538198863
+232	17011	101.918668929949	6227662.960841195
+232	17043	102.118668929949	2674613.98900786
+232	17075	102.318668929949	4309207.018412043
+232	17107	102.518668929949	21870751.708724737
+232	17139	102.718668929949	14926597.789543742
+232	17171	102.918668929949	3980788.735945001
+232	17205	103.118668929949	3911123.0373266754
+232	17239	103.318668929949	1258735.8337936406
+232	17271	103.518668929949	517817.63811185025
+232	17303	103.718668929949	23908966.03987245
+232	17337	103.918668929949	2576127.204537616
+232	17369	104.118668929949	4232809.343202192
+232	17401	104.318668929949	3078354.3488177285
+232	17433	104.518668929949	5824181.804070127
+232	17465	104.718668929949	4104455.0140302037
+232	17497	104.918668929949	6876160.262716979
+232	17531	105.118668929949	2195856.4563466855
+232	17563	105.318668929949	4780087.373651927
+232	17597	105.518668929949	7379744.970030179
+232	17629	105.718668929949	10143047.215863332
+232	17661	105.918668929949	4724839.686991804
+232	17695	106.118668929949	9454134.661972566
+232	17727	106.318668929949	3856056.9665260282
+232	17759	106.518668929949	2842568.589847146
+232	17791	106.718668929949	12349582.058407538
+232	17823	106.918668929949	5907759.439816602
+232	17855	107.118668929949	3244276.7561412565
+232	17887	107.318668929949	4186631.5976498006
+232	17919	107.518668929949	6028816.321356574
+232	17951	107.718668929949	23486105.637839004
+232	17983	107.918668929949	9586521.267639736
+232	18015	108.118668929949	6332133.897549137
+232	18047	108.318668929949	4686643.220231199
+232	18079	108.518668929949	5938287.135855264
+232	18111	108.718668929949	3021806.27258158
+232	18145	108.918668929949	2125394.08048588
+232	18177	109.118668929949	5669513.8850668585
+232	18209	109.318668929949	5557345.193765412
+232	18241	109.518668929949	6682079.352547795
+232	18273	109.718668929949	3776251.9788332703
+232	18305	109.918668929949	13274844.652409729
+232	18337	110.118668929949	13655091.097583037
+232	18369	110.318668929949	7750374.319653673
+232	18403	110.518668929949	3351461.1570042106
+232	18437	110.718668929949	12247362.737364778
+232	18469	110.918668929949	11642228.595887266
+232	18501	111.118668929949	6665078.596135471
+232	18533	111.318668929949	19183994.915428534
+232	18565	111.518668929949	6818861.726411111
+232	18597	111.718668929949	20341077.92778101
+232	18629	111.918668929949	4920160.228749407
+232	18661	112.118668929949	3477213.318248863
+232	18693	112.318668929949	8547307.232945364
+232	18725	112.518668929949	4405021.643994654
+232	18757	112.718668929949	6334537.943059568
+232	18789	112.918668929949	14477399.104035344
+232	18821	113.118668929949	6557169.552771918
+232	18855	113.318668929949	5500463.213392918
+232	18887	113.518668929949	24899432.24679406
+232	18919	113.718668929949	878298.9271751373
+232	18951	113.918668929949	4556472.120289817
+232	18983	114.118668929949	1130774.8856058419
+232	19017	114.318668929949	10619127.574481368
+232	19049	114.518668929949	1365950.6091031453
+232	19083	114.718668929949	4763671.138745653
+232	19117	114.918668929949	870038.8984725592
+232	19151	115.118668929949	4366778.723061021
+232	19183	115.318668929949	5176145.785793715
+232	19215	115.518668929949	2367098.0581072215
+232	19249	115.718668929949	2879376.729876339
+232	19281	115.918668929949	9789586.4695983
+232	19313	116.118668929949	4095176.796830128
+232	19345	116.318668929949	6127265.080914254
+232	19377	116.518668929949	8555678.221340764
+232	19409	116.718668929949	1657705.2685607045
+232	19441	116.918668929949	6247636.195771945
+232	19473	117.118668929949	575466.2957061129
+232	19505	117.318668929949	4318891.39974865
+232	19537	117.518668929949	19312302.84299868
+232	19569	117.718668929949	1008677.0253204335
+232	19601	117.918668929949	4465695.216585403
+232	19633	118.118668929949	2978014.038979406
+232	19665	118.318668929949	11148423.400191974
+232	19699	118.518668929949	4616741.1175457435
+232	19733	118.718668929949	9209691.052129226
+232	19765	118.918668929949	5295693.751340341
+232	19797	119.118668929949	4998858.831803812
+232	19829	119.318668929949	6908392.367471096
+232	19861	119.518668929949	5295561.985847819
+232	19895	119.718668929949	5820659.188898516
+232	19927	119.918668929949	11629246.841575526
+

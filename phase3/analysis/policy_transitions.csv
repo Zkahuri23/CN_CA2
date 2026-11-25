@@ -1,0 +1,236 @@
+repetition,window,hysteresis_db,time_s,position_m,from_ap,to_ap,reason,handover
+0,1,0,0.109862707155,0.1647940607325,,ap1,acquired beacon,0
+0,1,0,11.309862757441,16.9647941361615,ap1,ap2,below threshold and candidate meets hysteresis,1
+0,1,0,11.509862758435,17.2647941376525,ap2,ap1,below threshold and candidate meets hysteresis,1
+0,1,0,12.509862763408,18.764794145112,ap1,ap2,below threshold and candidate meets hysteresis,1
+0,1,0,12.918669028969,19.3780035434535,ap2,ap1,below threshold and candidate meets hysteresis,1
+0,1,0,13.918669023976,20.878003535963998,ap1,ap2,below threshold and candidate meets hysteresis,1
+0,1,0,14.109862771373,21.1647941570595,ap2,ap1,below threshold and candidate meets hysteresis,1
+0,1,0,14.709862774362,22.064794161543,ap1,ap2,below threshold and candidate meets hysteresis,1
+0,1,0,14.718669019982,22.078003529973,ap2,ap1,below threshold and candidate meets hysteresis,1
+0,1,0,15.518669015989,23.2780035239835,ap1,ap2,below threshold and candidate meets hysteresis,1
+0,1,0,15.709862779347,23.5647941690205,ap2,ap1,below threshold and candidate meets hysteresis,1
+0,1,0,15.718669014991,23.5780035224865,ap1,ap2,below threshold and candidate meets hysteresis,1
+0,1,0,15.918669013993,23.878003520989502,ap2,ap1,below threshold and candidate meets hysteresis,1
+0,1,0,16.309862782339,24.4647941735085,ap1,ap2,below threshold and candidate meets hysteresis,1
+0,1,0,16.509862783336,24.764794175004,ap2,ap1,below threshold and candidate meets hysteresis,1
+0,1,0,16.709862784333,25.064794176499504,ap1,ap2,below threshold and candidate meets hysteresis,1
+0,1,0,16.909862785331,25.3647941779965,ap2,ap1,below threshold and candidate meets hysteresis,1
+0,1,0,16.918669009004,25.378003513506,ap1,ap2,below threshold and candidate meets hysteresis,1
+0,1,0,17.309862787326,25.964794180989003,ap2,ap1,below threshold and candidate meets hysteresis,1
+0,1,0,17.318669007009,25.9780035105135,ap1,ap2,below threshold and candidate meets hysteresis,1
+0,1,0,17.718669005014,26.578003507521,ap2,ap1,below threshold and candidate meets hysteresis,1
+0,1,0,17.90986279032,26.864794185479997,ap1,ap2,below threshold and candidate meets hysteresis,1
+0,1,0,19.109862796308,28.664794194462,ap2,ap1,below threshold and candidate meets hysteresis,1
+0,1,0,19.318668997038,28.978003495556997,ap1,ap2,below threshold and candidate meets hysteresis,1
+0,1,0,21.518668986084,32.278003479126,ap2,ap1,below threshold and candidate meets hysteresis,1
+0,1,0,21.70986280929,32.564794213935,ap1,ap2,below threshold and candidate meets hysteresis,1
+0,1,0,21.909862810288,32.864794215432,ap2,ap1,below threshold and candidate meets hysteresis,1
+0,1,0,22.109862811287,33.1647942169305,ap1,ap2,below threshold and candidate meets hysteresis,1
+0,1,0,22.918668979123,34.378003468684504,ap2,ap1,below threshold and candidate meets hysteresis,1
+0,1,0,23.109862816282,34.664794224423,ap1,ap2,below threshold and candidate meets hysteresis,1
+1,1,0,0.083504406371,0.1252566095565,,ap1,acquired beacon,0
+1,1,0,12.283504461508,18.425256692262,ap1,ap2,below threshold and candidate meets hysteresis,1
+1,1,0,12.599537068912,18.899305603368,ap2,ap1,below threshold and candidate meets hysteresis,1
+1,1,0,14.083504470468,21.125256705702,ap1,ap2,below threshold and candidate meets hysteresis,1
+1,1,0,14.199537060923,21.2993055913845,ap2,ap1,below threshold and candidate meets hysteresis,1
+1,1,0,15.999537051939,23.9993055779085,ap1,ap2,below threshold and candidate meets hysteresis,1
+1,1,0,16.283504481433,24.4252567221495,ap2,ap1,below threshold and candidate meets hysteresis,1
+1,1,0,16.399537049943,24.5993055749145,ap1,ap2,below threshold and candidate meets hysteresis,1
+1,1,0,16.683504483428,25.025256725142,ap2,ap1,below threshold and candidate meets hysteresis,1
+1,1,0,16.883504484425,25.325256726637498,ap1,ap2,below threshold and candidate meets hysteresis,1
+1,1,0,17.083504485423,25.6252567281345,ap2,ap1,below threshold and candidate meets hysteresis,1
+1,1,0,17.199537045952,25.799305568928,ap1,ap2,below threshold and candidate meets hysteresis,1
+1,1,0,17.283504486421,25.9252567296315,ap2,ap1,below threshold and candidate meets hysteresis,1
+1,1,0,17.883504489414,26.825256734121,ap1,ap2,below threshold and candidate meets hysteresis,1
+1,1,0,18.483504492408,27.725256738611996,ap2,ap1,below threshold and candidate meets hysteresis,1
+1,1,0,18.599537038971,27.8993055584565,ap1,ap2,below threshold and candidate meets hysteresis,1
+1,1,0,18.883504494405,28.325256741607497,ap2,ap1,below threshold and candidate meets hysteresis,1
+1,1,0,19.583504494405,29.375256741607497,ap1,,beacon timeout,0
+1,1,0,19.583504494405,29.375256741607497,,ap2,acquired after timeout,1
+1,1,0,20.999537027016,31.499305540524,ap2,ap1,below threshold and candidate meets hysteresis,1
+1,1,0,21.083504505388,31.625256758082,ap1,ap2,below threshold and candidate meets hysteresis,1
+1,1,0,23.599537014092,35.399305521138004,ap2,ap1,below threshold and candidate meets hysteresis,1
+1,1,0,23.683504518374,35.525256777561,ap1,ap2,below threshold and candidate meets hysteresis,1
+2,1,0,0.087298987211,0.1309484808165,,ap1,acquired beacon,0
+2,1,0,12.237116525389,18.3556747880835,ap1,ap2,below threshold and candidate meets hysteresis,1
+2,1,0,12.287299042364,18.430948563546,ap2,ap1,below threshold and candidate meets hysteresis,1
+2,1,0,14.037116516402,21.055674774603,ap1,ap2,below threshold and candidate meets hysteresis,1
+2,1,0,14.087299051325,21.1309485769875,ap2,ap1,below threshold and candidate meets hysteresis,1
+2,1,0,14.287299052321,21.430948578481498,ap1,ap2,below threshold and candidate meets hysteresis,1
+2,1,0,14.487299053317,21.7309485799755,ap2,ap1,below threshold and candidate meets hysteresis,1
+2,1,0,14.887299055311,22.3309485829665,ap1,ap2,below threshold and candidate meets hysteresis,1
+2,1,0,15.087299056307,22.630948584460498,ap2,ap1,below threshold and candidate meets hysteresis,1
+2,1,0,15.687299059298,23.530948588947002,ap1,ap2,below threshold and candidate meets hysteresis,1
+2,1,0,16.037116506419,24.055674759628502,ap2,ap1,below threshold and candidate meets hysteresis,1
+2,1,0,16.28729906229,24.430948593434998,ap1,ap2,below threshold and candidate meets hysteresis,1
+2,1,0,16.837116502428,25.255674753641998,ap2,ap1,below threshold and candidate meets hysteresis,1
+2,1,0,17.08729906628,25.63094859942,ap1,ap2,below threshold and candidate meets hysteresis,1
+2,1,0,17.237116500433,25.8556747506495,ap2,ap1,below threshold and candidate meets hysteresis,1
+2,1,0,17.487299068275,26.2309486024125,ap1,ap2,below threshold and candidate meets hysteresis,1
+2,1,0,17.637116498438,26.455674747657,ap2,ap1,below threshold and candidate meets hysteresis,1
+2,1,0,17.887299070271,26.830948605406498,ap1,ap2,below threshold and candidate meets hysteresis,1
+2,1,0,18.437116494449,27.6556747416735,ap2,ap1,below threshold and candidate meets hysteresis,1
+2,1,0,18.637116493452,27.955674740178004,ap1,ap2,below threshold and candidate meets hysteresis,1
+2,1,0,19.037116491458,28.555674737187,ap2,ap1,below threshold and candidate meets hysteresis,1
+2,1,0,19.437116489465,29.155674734197504,ap1,ap2,below threshold and candidate meets hysteresis,1
+2,1,0,20.23711648548,30.355674728220002,ap2,ap1,below threshold and candidate meets hysteresis,1
+2,1,0,20.437116484484,30.655674726726,ap1,ap2,below threshold and candidate meets hysteresis,1
+2,1,0,20.637116483488,30.955674725232,ap2,ap1,below threshold and candidate meets hysteresis,1
+2,1,0,20.837116482492,31.255674723738,ap1,ap2,below threshold and candidate meets hysteresis,1
+2,1,0,21.237116480502,31.855674720753,ap2,ap1,below threshold and candidate meets hysteresis,1
+2,1,0,21.287299087243,31.9309486308645,ap1,ap2,below threshold and candidate meets hysteresis,1
+2,1,0,24.237116465597,36.355674698395504,ap2,ap1,below threshold and candidate meets hysteresis,1
+2,1,0,24.287299102228,36.430948653342,ap1,ap2,below threshold and candidate meets hysteresis,1
+0,1,2,0.109862707155,0.1647940607325,,ap1,acquired beacon,0
+0,1,2,11.31866903696,16.978003555439997,ap1,ap2,below threshold and candidate meets hysteresis,1
+0,1,2,11.509862758435,17.2647941376525,ap2,ap1,below threshold and candidate meets hysteresis,1
+0,1,2,15.718669014991,23.5780035224865,ap1,ap2,below threshold and candidate meets hysteresis,1
+0,1,2,15.918669013993,23.878003520989502,ap2,ap1,below threshold and candidate meets hysteresis,1
+0,1,2,16.309862782339,24.4647941735085,ap1,ap2,below threshold and candidate meets hysteresis,1
+0,1,2,16.509862783336,24.764794175004,ap2,ap1,below threshold and candidate meets hysteresis,1
+0,1,2,16.709862784333,25.064794176499504,ap1,ap2,below threshold and candidate meets hysteresis,1
+0,1,2,17.309862787326,25.964794180989003,ap2,ap1,below threshold and candidate meets hysteresis,1
+0,1,2,17.318669007009,25.9780035105135,ap1,ap2,below threshold and candidate meets hysteresis,1
+0,1,2,17.718669005014,26.578003507521,ap2,ap1,below threshold and candidate meets hysteresis,1
+0,1,2,17.90986279032,26.864794185479997,ap1,ap2,below threshold and candidate meets hysteresis,1
+0,1,2,19.118668998035,28.6780034970525,ap2,ap1,below threshold and candidate meets hysteresis,1
+0,1,2,19.318668997038,28.978003495556997,ap1,ap2,below threshold and candidate meets hysteresis,1
+0,1,2,21.518668986084,32.278003479126,ap2,ap1,below threshold and candidate meets hysteresis,1
+0,1,2,22.109862811287,33.1647942169305,ap1,ap2,below threshold and candidate meets hysteresis,1
+0,1,2,22.918668979123,34.378003468684504,ap2,ap1,below threshold and candidate meets hysteresis,1
+0,1,2,23.11866897813,34.678003467195,ap1,ap2,below threshold and candidate meets hysteresis,1
+1,1,2,0.083504406371,0.1252566095565,,ap1,acquired beacon,0
+1,1,2,12.283504461508,18.425256692262,ap1,ap2,below threshold and candidate meets hysteresis,1
+1,1,2,12.599537068912,18.899305603368,ap2,ap1,below threshold and candidate meets hysteresis,1
+1,1,2,15.999537051939,23.9993055779085,ap1,ap2,below threshold and candidate meets hysteresis,1
+1,1,2,16.283504481433,24.4252567221495,ap2,ap1,below threshold and candidate meets hysteresis,1
+1,1,2,16.399537049943,24.5993055749145,ap1,ap2,below threshold and candidate meets hysteresis,1
+1,1,2,17.283504486421,25.9252567296315,ap2,ap1,below threshold and candidate meets hysteresis,1
+1,1,2,17.883504489414,26.825256734121,ap1,ap2,below threshold and candidate meets hysteresis,1
+1,1,2,18.883504494405,28.325256741607497,ap2,ap1,below threshold and candidate meets hysteresis,1
+1,1,2,19.583504494405,29.375256741607497,ap1,,beacon timeout,0
+1,1,2,19.583504494405,29.375256741607497,,ap2,acquired after timeout,1
+2,1,2,0.087298987211,0.1309484808165,,ap1,acquired beacon,0
+2,1,2,14.287299052321,21.430948578481498,ap1,ap2,below threshold and candidate meets hysteresis,1
+2,1,2,14.487299053317,21.7309485799755,ap2,ap1,below threshold and candidate meets hysteresis,1
+2,1,2,15.687299059298,23.530948588947002,ap1,ap2,below threshold and candidate meets hysteresis,1
+2,1,2,16.087299061293,24.1309485919395,ap2,ap1,below threshold and candidate meets hysteresis,1
+2,1,2,16.28729906229,24.430948593434998,ap1,ap2,below threshold and candidate meets hysteresis,1
+2,1,2,16.837116502428,25.255674753641998,ap2,ap1,below threshold and candidate meets hysteresis,1
+2,1,2,17.487299068275,26.2309486024125,ap1,ap2,below threshold and candidate meets hysteresis,1
+2,1,2,17.637116498438,26.455674747657,ap2,ap1,below threshold and candidate meets hysteresis,1
+2,1,2,18.087299071269,27.1309486069035,ap1,ap2,below threshold and candidate meets hysteresis,1
+2,1,2,18.437116494449,27.6556747416735,ap2,ap1,below threshold and candidate meets hysteresis,1
+2,1,2,18.637116493452,27.955674740178004,ap1,ap2,below threshold and candidate meets hysteresis,1
+2,1,2,19.037116491458,28.555674737187,ap2,ap1,below threshold and candidate meets hysteresis,1
+2,1,2,19.437116489465,29.155674734197504,ap1,ap2,below threshold and candidate meets hysteresis,1
+2,1,2,20.637116483488,30.955674725232,ap2,ap1,below threshold and candidate meets hysteresis,1
+2,1,2,20.837116482492,31.255674723738,ap1,ap2,below threshold and candidate meets hysteresis,1
+0,1,4,0.109862707155,0.1647940607325,,ap1,acquired beacon,0
+0,1,4,16.318669011998,24.478003517997003,ap1,ap2,below threshold and candidate meets hysteresis,1
+0,1,4,16.509862783336,24.764794175004,ap2,ap1,below threshold and candidate meets hysteresis,1
+0,1,4,16.709862784333,25.064794176499504,ap1,ap2,below threshold and candidate meets hysteresis,1
+0,1,4,17.309862787326,25.964794180989003,ap2,ap1,below threshold and candidate meets hysteresis,1
+0,1,4,17.318669007009,25.9780035105135,ap1,ap2,below threshold and candidate meets hysteresis,1
+0,1,4,17.718669005014,26.578003507521,ap2,ap1,below threshold and candidate meets hysteresis,1
+0,1,4,17.918669004017,26.8780035060255,ap1,ap2,below threshold and candidate meets hysteresis,1
+0,1,4,19.118668998035,28.6780034970525,ap2,ap1,below threshold and candidate meets hysteresis,1
+0,1,4,19.318668997038,28.978003495556997,ap1,ap2,below threshold and candidate meets hysteresis,1
+0,1,4,21.518668986084,32.278003479126,ap2,ap1,below threshold and candidate meets hysteresis,1
+0,1,4,22.109862811287,33.1647942169305,ap1,ap2,below threshold and candidate meets hysteresis,1
+1,1,4,0.083504406371,0.1252566095565,,ap1,acquired beacon,0
+1,1,4,12.283504461508,18.425256692262,ap1,ap2,below threshold and candidate meets hysteresis,1
+1,1,4,12.799537067913,19.1993056018695,ap2,ap1,below threshold and candidate meets hysteresis,1
+1,1,4,15.999537051939,23.9993055779085,ap1,ap2,below threshold and candidate meets hysteresis,1
+1,1,4,17.283504486421,25.9252567296315,ap2,ap1,below threshold and candidate meets hysteresis,1
+1,1,4,18.083504490412,27.125256735618002,ap1,ap2,below threshold and candidate meets hysteresis,1
+2,1,4,0.087298987211,0.1309484808165,,ap1,acquired beacon,0
+2,1,4,14.287299052321,21.430948578481498,ap1,ap2,below threshold and candidate meets hysteresis,1
+2,1,4,14.487299053317,21.7309485799755,ap2,ap1,below threshold and candidate meets hysteresis,1
+2,1,4,15.837116507417,23.7556747611255,ap1,ap2,below threshold and candidate meets hysteresis,1
+2,1,4,16.087299061293,24.1309485919395,ap2,ap1,below threshold and candidate meets hysteresis,1
+2,1,4,16.637116503426,24.955674755139,ap1,ap2,below threshold and candidate meets hysteresis,1
+2,1,4,16.837116502428,25.255674753641998,ap2,ap1,below threshold and candidate meets hysteresis,1
+2,1,4,18.237116495446,27.355674743168997,ap1,ap2,below threshold and candidate meets hysteresis,1
+2,1,4,18.437116494449,27.6556747416735,ap2,ap1,below threshold and candidate meets hysteresis,1
+2,1,4,18.637116493452,27.955674740178004,ap1,ap2,below threshold and candidate meets hysteresis,1
+2,1,4,19.037116491458,28.555674737187,ap2,ap1,below threshold and candidate meets hysteresis,1
+2,1,4,19.437116489465,29.155674734197504,ap1,ap2,below threshold and candidate meets hysteresis,1
+0,1,6,0.109862707155,0.1647940607325,,ap1,acquired beacon,0
+0,1,6,16.318669011998,24.478003517997003,ap1,ap2,below threshold and candidate meets hysteresis,1
+0,1,6,16.509862783336,24.764794175004,ap2,ap1,below threshold and candidate meets hysteresis,1
+0,1,6,16.709862784333,25.064794176499504,ap1,ap2,below threshold and candidate meets hysteresis,1
+0,1,6,17.718669005014,26.578003507521,ap2,ap1,below threshold and candidate meets hysteresis,1
+0,1,6,17.918669004017,26.8780035060255,ap1,ap2,below threshold and candidate meets hysteresis,1
+0,1,6,19.118668998035,28.6780034970525,ap2,ap1,below threshold and candidate meets hysteresis,1
+0,1,6,19.318668997038,28.978003495556997,ap1,ap2,below threshold and candidate meets hysteresis,1
+0,1,6,21.909862810288,32.864794215432,ap2,ap1,below threshold and candidate meets hysteresis,1
+0,1,6,22.109862811287,33.1647942169305,ap1,ap2,below threshold and candidate meets hysteresis,1
+1,1,6,0.083504406371,0.1252566095565,,ap1,acquired beacon,0
+1,1,6,12.39953706991,18.599305604865002,ap1,ap2,below threshold and candidate meets hysteresis,1
+1,1,6,12.799537067913,19.1993056018695,ap2,ap1,below threshold and candidate meets hysteresis,1
+1,1,6,16.083504480436,24.125256720654,ap1,ap2,below threshold and candidate meets hysteresis,1
+2,1,6,0.087298987211,0.1309484808165,,ap1,acquired beacon,0
+2,1,6,16.637116503426,24.955674755139,ap1,ap2,below threshold and candidate meets hysteresis,1
+2,1,6,16.837116502428,25.255674753641998,ap2,ap1,below threshold and candidate meets hysteresis,1
+2,1,6,18.637116493452,27.955674740178004,ap1,ap2,below threshold and candidate meets hysteresis,1
+0,1,8,0.109862707155,0.1647940607325,,ap1,acquired beacon,0
+0,1,8,18.11866900302,27.178003504529997,ap1,ap2,below threshold and candidate meets hysteresis,1
+1,1,8,0.083504406371,0.1252566095565,,ap1,acquired beacon,0
+1,1,8,18.199537040965,27.299305561447504,ap1,ap2,below threshold and candidate meets hysteresis,1
+2,1,8,0.087298987211,0.1309484808165,,ap1,acquired beacon,0
+2,1,8,19.437116489465,29.155674734197504,ap1,ap2,below threshold and candidate meets hysteresis,1
+0,1,10,0.109862707155,0.1647940607325,,ap1,acquired beacon,0
+0,1,10,19.718668995045,29.5780034925675,ap1,ap2,below threshold and candidate meets hysteresis,1
+1,1,10,0.083504406371,0.1252566095565,,ap1,acquired beacon,0
+1,1,10,19.583504494405,29.375256741607497,ap1,,beacon timeout,0
+1,1,10,19.583504494405,29.375256741607497,,ap2,acquired after timeout,1
+2,1,10,0.087298987211,0.1309484808165,,ap1,acquired beacon,0
+2,1,10,19.437116489465,29.155674734197504,ap1,ap2,below threshold and candidate meets hysteresis,1
+0,10,0,0.109862707155,0.1647940607325,,ap1,acquired beacon,0
+0,10,0,17.318669007009,25.9780035105135,ap1,ap2,below threshold and candidate meets hysteresis,1
+0,10,0,17.509862788324,26.264794182486,ap2,ap1,below threshold and candidate meets hysteresis,1
+0,10,0,17.90986279032,26.864794185479997,ap1,ap2,below threshold and candidate meets hysteresis,1
+1,10,0,0.083504406371,0.1252566095565,,ap1,acquired beacon,0
+1,10,0,17.199537045952,25.799305568928,ap1,ap2,below threshold and candidate meets hysteresis,1
+2,10,0,0.087298987211,0.1309484808165,,ap1,acquired beacon,0
+2,10,0,16.687299064285,25.0309485964275,ap1,ap2,below threshold and candidate meets hysteresis,1
+2,10,0,16.837116502428,25.255674753641998,ap2,ap1,below threshold and candidate meets hysteresis,1
+2,10,0,19.08729907626,28.63094861439,ap1,ap2,below threshold and candidate meets hysteresis,1
+2,10,0,19.237116490462,28.855674735693,ap2,ap1,below threshold and candidate meets hysteresis,1
+2,10,0,19.437116489465,29.155674734197504,ap1,ap2,below threshold and candidate meets hysteresis,1
+0,10,2,0.109862707155,0.1647940607325,,ap1,acquired beacon,0
+0,10,2,18.509862793314,27.764794189971,ap1,ap2,below threshold and candidate meets hysteresis,1
+1,10,2,0.083504406371,0.1252566095565,,ap1,acquired beacon,0
+1,10,2,18.999537036978,28.499305555467004,ap1,ap2,below threshold and candidate meets hysteresis,1
+2,10,2,0.087298987211,0.1309484808165,,ap1,acquired beacon,0
+2,10,2,19.637116488469,29.4556747327035,ap1,ap2,below threshold and candidate meets hysteresis,1
+0,10,4,0.109862707155,0.1647940607325,,ap1,acquired beacon,0
+0,10,4,20.309862802299,30.464794203448502,ap1,ap2,below threshold and candidate meets hysteresis,1
+1,10,4,0.083504406371,0.1252566095565,,ap1,acquired beacon,0
+1,10,4,19.583504494405,29.375256741607497,ap1,,beacon timeout,0
+1,10,4,19.583504494405,29.375256741607497,,ap2,acquired after timeout,1
+2,10,4,0.087298987211,0.1309484808165,,ap1,acquired beacon,0
+2,10,4,21.437116479506,32.155674719259,ap1,ap2,below threshold and candidate meets hysteresis,1
+0,10,6,0.109862707155,0.1647940607325,,ap1,acquired beacon,0
+0,10,6,21.118668988074,31.678003482111,ap1,ap2,below threshold and candidate meets hysteresis,1
+1,10,6,0.083504406371,0.1252566095565,,ap1,acquired beacon,0
+1,10,6,19.583504494405,29.375256741607497,ap1,,beacon timeout,0
+1,10,6,19.583504494405,29.375256741607497,,ap2,acquired after timeout,1
+2,10,6,0.087298987211,0.1309484808165,,ap1,acquired beacon,0
+2,10,6,21.837116477517,32.7556747162755,ap1,ap2,below threshold and candidate meets hysteresis,1
+0,10,8,0.109862707155,0.1647940607325,,ap1,acquired beacon,0
+0,10,8,24.709862824275,37.064794236412496,ap1,ap2,below threshold and candidate meets hysteresis,1
+1,10,8,0.083504406371,0.1252566095565,,ap1,acquired beacon,0
+1,10,8,19.583504494405,29.375256741607497,ap1,,beacon timeout,0
+1,10,8,19.583504494405,29.375256741607497,,ap2,acquired after timeout,1
+2,10,8,0.087298987211,0.1309484808165,,ap1,acquired beacon,0
+2,10,8,22.237116475528,33.355674713292004,ap1,ap2,below threshold and candidate meets hysteresis,1
+0,10,10,0.109862707155,0.1647940607325,,ap1,acquired beacon,0
+0,10,10,24.918668969204,37.378003453806,ap1,ap2,below threshold and candidate meets hysteresis,1
+1,10,10,0.083504406371,0.1252566095565,,ap1,acquired beacon,0
+1,10,10,19.583504494405,29.375256741607497,ap1,,beacon timeout,0
+1,10,10,19.583504494405,29.375256741607497,,ap2,acquired after timeout,1
+2,10,10,0.087298987211,0.1309484808165,,ap1,acquired beacon,0
+2,10,10,23.237116470559,34.855674705838496,ap1,ap2,below threshold and candidate meets hysteresis,1

@@ -1,0 +1,6 @@
+metric,value,unit
+Walk scan duration if both AP channels are active,1.55,s
+ScanNeighbor scan duration if both AP channels are active,0.8,s
+Beacon timeout,0.7,s
+Equal mean power location,25.5,m
+"6 dB noiseless hysteresis crossing, ignoring 2 m offset and threshold",30.920679013056837,m

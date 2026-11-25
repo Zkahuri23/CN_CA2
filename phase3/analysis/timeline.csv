@@ -1,0 +1,116 @@
+config,repetition,time_s,position_m,event,state
+Walk,0,19.0001520953,28.50022814295,Last AP1 voice frame,Associated
+Walk,0,19.018669015177,28.528003522765502,Scan started,Associated -> Scanning
+Walk,0,19.018669015177,28.528003522765502,Channel 0 dwell started (0.250000 s),Scanning -> Scanning
+Walk,0,19.268669015177,28.903003522765502,Channel 1 dwell started (0.400000 s),Scanning -> Scanning
+Walk,0,19.668669015177,29.503003522765496,Channel 2 dwell started (0.250000 s),Scanning -> Scanning
+Walk,0,19.918669015177,29.878003522765496,Channel 3 dwell started (0.400000 s),Scanning -> Scanning
+Walk,0,20.318669015177,30.4780035227655,Channel 4 dwell started (0.250000 s),Scanning -> Scanning
+Walk,0,20.568669015177,30.8530035227655,Scan confirmed,Scanning -> Authenticating
+Walk,0,20.568669015177,30.8530035227655,Authentication started,Authenticating
+Walk,0,20.569509285303,30.8542639279545,Authentication confirmed,Authenticating -> Associating
+Walk,0,20.569509285303,30.8542639279545,Association started,Associating
+Walk,0,20.569952420358,30.854928630537,Association confirmed,Associating -> Associated
+Walk,0,20.580152067477,30.870228101215503,First AP2 voice frame,Associated
+Walk,1,26.280602131662,39.420903197493004,Last AP1 voice frame,Associated
+Walk,1,26.299537089886,39.449305634829,Scan started,Associated -> Scanning
+Walk,1,26.299537089886,39.449305634829,Channel 0 dwell started (0.250000 s),Scanning -> Scanning
+Walk,1,26.549537089886,39.824305634829,Channel 1 dwell started (0.400000 s),Scanning -> Scanning
+Walk,1,26.949537089886,40.424305634829,Channel 2 dwell started (0.250000 s),Scanning -> Scanning
+Walk,1,27.199537089886,40.799305634829,Channel 3 dwell started (0.400000 s),Scanning -> Scanning
+Walk,1,27.599537089886,41.399305634829,Channel 4 dwell started (0.250000 s),Scanning -> Scanning
+Walk,1,27.849537089886,41.774305634829,Scan confirmed,Scanning -> Authenticating
+Walk,1,27.849537089886,41.774305634829,Authentication started,Authenticating
+Walk,1,27.850233215832,41.775349823748,Authentication confirmed,Authenticating -> Associating
+Walk,1,27.850233215832,41.775349823748,Association started,Associating
+Walk,1,27.850766278799,41.7761494181985,Association confirmed,Associating -> Associated
+Walk,1,27.860152031437,41.7902280471555,First AP2 voice frame,Associated
+Walk,2,25.720152128862,38.580228193293,Last AP1 voice frame,Associated
+Walk,2,25.737116541744,38.605674812616,Scan started,Associated -> Scanning
+Walk,2,25.737116541744,38.605674812616,Channel 0 dwell started (0.250000 s),Scanning -> Scanning
+Walk,2,25.987116541744,38.980674812616,Channel 1 dwell started (0.400000 s),Scanning -> Scanning
+Walk,2,26.387116541744,39.580674812615996,Channel 2 dwell started (0.250000 s),Scanning -> Scanning
+Walk,2,26.637116541744,39.955674812615996,Channel 3 dwell started (0.400000 s),Scanning -> Scanning
+Walk,2,27.037116541744,40.555674812616,Channel 4 dwell started (0.250000 s),Scanning -> Scanning
+Walk,2,27.287116541744,40.930674812616,Scan confirmed,Scanning -> Authenticating
+Walk,2,27.287116541744,40.930674812616,Authentication started,Authenticating
+Walk,2,27.288037678711,40.9320565180665,Authentication confirmed,Authenticating -> Associating
+Walk,2,27.288037678711,40.9320565180665,Association started,Associating
+Walk,2,27.288498747187,40.9327481207805,Association confirmed,Associating -> Associated
+Walk,2,27.300152034181,40.9502280512715,First AP2 voice frame,Associated
+Walk,3,23.300152116771,34.9502281751565,Last AP1 voice frame,Associated
+Walk,3,23.314245089411,34.9713676341165,Scan started,Associated -> Scanning
+Walk,3,23.314245089411,34.9713676341165,Channel 0 dwell started (0.250000 s),Scanning -> Scanning
+Walk,3,23.564245089411,35.3463676341165,Channel 1 dwell started (0.400000 s),Scanning -> Scanning
+Walk,3,23.964245089411,35.9463676341165,Channel 2 dwell started (0.250000 s),Scanning -> Scanning
+Walk,3,24.214245089411,36.3213676341165,Channel 3 dwell started (0.400000 s),Scanning -> Scanning
+Walk,3,24.614245089411,36.9213676341165,Channel 4 dwell started (0.250000 s),Scanning -> Scanning
+Walk,3,24.864245089411,37.2963676341165,Scan confirmed,Scanning -> Authenticating
+Walk,3,24.864245089411,37.2963676341165,Authentication started,Authenticating
+Walk,3,24.864959274184,37.297438911276,Authentication confirmed,Authenticating -> Associating
+Walk,3,24.864959274184,37.297438911276,Association started,Associating
+Walk,3,24.865438366563,37.298157549844504,Association confirmed,Associating -> Associated
+Walk,3,24.880152046117,37.3202280691755,First AP2 voice frame,Associated
+Walk,4,22.080406214365,33.1206093215475,Scan started,Associated -> Scanning
+Walk,4,22.08053911068,33.12080866602,Last AP1 voice frame,Associated
+Walk,4,22.08058722136,33.12088083204,Channel 0 dwell started (0.399819 s),Scanning -> Scanning
+Walk,4,22.480406214365,33.7206093215475,Channel 1 dwell started (0.400000 s),Scanning -> Scanning
+Walk,4,22.880406214365,34.3206093215475,Channel 2 dwell started (0.250000 s),Scanning -> Scanning
+Walk,4,23.130406214365,34.6956093215475,Channel 3 dwell started (0.400000 s),Scanning -> Scanning
+Walk,4,23.530406214365,35.2956093215475,Channel 4 dwell started (0.250000 s),Scanning -> Scanning
+Walk,4,23.780406214365,35.6706093215475,Scan confirmed,Scanning -> Authenticating
+Walk,4,23.780406214365,35.6706093215475,Authentication started,Authenticating
+Walk,4,23.781210420624,35.671815630935996,Authentication confirmed,Authenticating -> Associating
+Walk,4,23.781210420624,35.671815630935996,Association started,Associating
+Walk,4,23.781608523747,35.6724127856205,Association confirmed,Associating -> Associated
+Walk,4,23.800152051469,35.7002280772035,First AP2 voice frame,Associated
+ScanNeighbor,0,27.000152135258,40.500228202887,Last AP1 voice frame,Associated
+ScanNeighbor,0,27.018669055131,40.5280035826965,Scan started,Associated -> Scanning
+ScanNeighbor,0,27.018669055131,40.5280035826965,Channel 1 dwell started (0.250000 s),Scanning -> Scanning
+ScanNeighbor,0,27.268669055131,40.9030035826965,Channel 3 dwell started (0.400000 s),Scanning -> Scanning
+ScanNeighbor,0,27.668669055131,41.5030035826965,Scan confirmed,Scanning -> Authenticating
+ScanNeighbor,0,27.668669055131,41.5030035826965,Authentication started,Authenticating
+ScanNeighbor,0,27.669563184616,41.504344776924,Authentication confirmed,Authenticating -> Associating
+ScanNeighbor,0,27.669563184616,41.504344776924,Association started,Associating
+ScanNeighbor,0,27.670069249351,41.505103874026496,Association confirmed,Associating -> Associated
+ScanNeighbor,0,27.680152032318,41.520228048476994,First AP2 voice frame,Associated
+ScanNeighbor,1,26.080602130663,39.1209031959945,Last AP1 voice frame,Associated
+ScanNeighbor,1,26.099537088887,39.1493056333305,Scan started,Associated -> Scanning
+ScanNeighbor,1,26.099537088887,39.1493056333305,Channel 1 dwell started (0.400000 s),Scanning -> Scanning
+ScanNeighbor,1,26.499537088887,39.7493056333305,Channel 3 dwell started (0.400000 s),Scanning -> Scanning
+ScanNeighbor,1,26.899537088887,40.3493056333305,Scan confirmed,Scanning -> Authenticating
+ScanNeighbor,1,26.899537088887,40.3493056333305,Authentication started,Authenticating
+ScanNeighbor,1,26.900323233471,40.3504848502065,Authentication confirmed,Authenticating -> Associating
+ScanNeighbor,1,26.900323233471,40.3504848502065,Association started,Associating
+ScanNeighbor,1,26.900847305756,40.351270958634,Association confirmed,Associating -> Associated
+ScanNeighbor,1,26.920152036047,40.3802280540705,First AP2 voice frame,Associated
+ScanNeighbor,2,31.903959159769,47.855938739653496,Last AP1 voice frame,Associated
+ScanNeighbor,2,31.937116572731,47.9056748590965,Scan started,Associated -> Scanning
+ScanNeighbor,2,31.937116572731,47.9056748590965,Channel 1 dwell started (0.250000 s),Scanning -> Scanning
+ScanNeighbor,2,32.187116572731,48.2806748590965,Channel 3 dwell started (0.400000 s),Scanning -> Scanning
+ScanNeighbor,2,32.587116572731,48.8806748590965,Scan confirmed,Scanning -> Authenticating
+ScanNeighbor,2,32.587116572731,48.8806748590965,Authentication started,Authenticating
+ScanNeighbor,2,32.587758611608,48.88163791741201,Authentication confirmed,Authenticating -> Associating
+ScanNeighbor,2,32.587758611608,48.88163791741201,Association started,Associating
+ScanNeighbor,2,32.588291631041,48.882437446561504,Association confirmed,Associating -> Associated
+ScanNeighbor,2,32.600152009673,48.90022801450951,First AP2 voice frame,Associated
+ScanNeighbor,3,27.100152135758,40.650228203637,Last AP1 voice frame,Associated
+ScanNeighbor,3,27.114245108395,40.6713676625925,Scan started,Associated -> Scanning
+ScanNeighbor,3,27.114245108395,40.6713676625925,Channel 1 dwell started (0.400000 s),Scanning -> Scanning
+ScanNeighbor,3,27.514245108395,41.271367662592496,Channel 3 dwell started (0.400000 s),Scanning -> Scanning
+ScanNeighbor,3,27.914245108395,41.871367662592505,Scan confirmed,Scanning -> Authenticating
+ScanNeighbor,3,27.914245108395,41.871367662592505,Authentication started,Authenticating
+ScanNeighbor,3,27.915031233077,41.872546849615496,Authentication confirmed,Authenticating -> Associating
+ScanNeighbor,3,27.915031233077,41.872546849615496,Association started,Associating
+ScanNeighbor,3,27.915510295411,41.8732654431165,Association confirmed,Associating -> Associated
+ScanNeighbor,3,27.920152031144,41.880228046716,First AP2 voice frame,Associated
+ScanNeighbor,4,24.080451234344,36.120676851516,Scan started,Associated -> Scanning
+ScanNeighbor,4,24.08049412067,36.120741181005,Last AP1 voice frame,Associated
+ScanNeighbor,4,24.08054224134,36.120813362010004,Channel 1 dwell started (0.399909 s),Scanning -> Scanning
+ScanNeighbor,4,24.480451234344,36.720676851516,Channel 3 dwell started (0.400000 s),Scanning -> Scanning
+ScanNeighbor,4,24.880451234344,37.320676851516,Scan confirmed,Scanning -> Authenticating
+ScanNeighbor,4,24.880451234344,37.320676851516,Authentication started,Authenticating
+ScanNeighbor,4,24.881336418793,37.322004628189504,Authentication confirmed,Authenticating -> Associating
+ScanNeighbor,4,24.881336418793,37.322004628189504,Association started,Associating
+ScanNeighbor,4,24.881725511011,37.3225882665165,Association confirmed,Associating -> Associated
+ScanNeighbor,4,24.900152046018,37.350228069027,First AP2 voice frame,Associated

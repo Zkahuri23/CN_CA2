@@ -1,0 +1,6 @@
+component,bytes
+UDP,8
+IPv4,20
+LLC/SNAP,8
+802.11 MAC,24
+FCS,4
